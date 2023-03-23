@@ -1,6 +1,5 @@
 import Header from "@/components/navbar";
 import Head from "next/head";
-import Image from "next/image";
 import InstagramIcon from "../assets/svg/instagram.svg";
 import FaceBookIcon from "../assets/svg/facebook.svg";
 import TwitterIcon from "../assets/svg/twitter.svg";
@@ -11,6 +10,12 @@ import HeroCard3 from "../assets/img/hero-card3.png";
 import HeroCard4 from "../assets/img/hero-card4.png";
 
 export default function Home() {
+  const heroCards = [
+    { title: "ALL HAIL THE KING OF AMAPIANO: Kabza De Small", img: HeroCard1 },
+    { img: HeroCard2 },
+    { img: HeroCard4 },
+    { img: HeroCard3 },
+  ];
   return (
     <>
       <Head>
@@ -21,12 +26,11 @@ export default function Home() {
       </Head>
       <main>
         <Header />
-        {/*<section className="bg-heroImg">*/}
         <section className="bg-[url('../assets/img/hero.png')] h-[90vh] flex">
           <aside className="w-[4rem] flex flex-col gap-6 justify-end mx-10 mb-12">
-            <Image src={InstagramIcon} alt="Instagram Icon" />
-            <Image src={TwitterIcon} alt="Twitter Icon" />
-            <Image src={FaceBookIcon} alt="FAcebook Icon" />
+            <InstagramIcon />
+            <TwitterIcon />
+            <FaceBookIcon />
           </aside>
           <div className="border-l border-[#403B39] px-[3rem] mt-[5rem] mb-[3rem]">
             <h1 className="text-header font-extrabold text-6xl mt-[4rem]">
@@ -44,13 +48,13 @@ export default function Home() {
                 Top Stories
               </h2>
               <div className="flex gap-2 ml-12">
-                <HeroCards
-                  title="ALL HAIL THE KING OF AMAPIANO: Kabza De Small"
-                  img={HeroCard1}
-                />
-                <HeroCards img={HeroCard2} />
-                <HeroCards img={HeroCard4} />
-                <HeroCards img={HeroCard3} />
+                {heroCards.map((heroCard, id) => (
+                  <HeroCards
+                    key={id}
+                    title={heroCard?.title ?? ""}
+                    img={heroCard.img}
+                  />
+                ))}
               </div>
             </section>
           </div>

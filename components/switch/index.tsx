@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
+import useColorMode from "@/hooks/useColorMode";
 
 export default function ToggleSwitch() {
   const [enabled, setEnabled] = useState(false);
+  const [colorMode, setColorMode] = useColorMode();
+
+  const handleToggle = () => {
+    setEnabled((prev) => !prev);
+    setColorMode(colorMode === "light" ? "dark" : "light");
+  };
 
   return (
     <div className="">
       <Switch
         checked={enabled}
-        onChange={setEnabled}
+        onChange={handleToggle}
         className={`z-0 ${enabled ? "bg-switch" : "bg-switch "}
           relative inline-flex h-[28px] w-[54px] shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
       >

@@ -9,11 +9,11 @@ import DropDown from "../music-dropdown";
 const Header = () => {
   const router = useRouter();
   return (
-    <nav className="flex justify-between mx-8 items-center">
+    <nav className="flex justify-between px-8 items-center dark:bg-darkBg">
       <div>
         <Image src={CompanyLogo} alt="Company Logo" height={90} width={100} />
       </div>
-      <ul className="flex gap-6 items-center text-textColor mr-6">
+      <ul className="flex gap-6 items-center text-textColor dark:text-darkModeText mr-6">
         <li>
           <Link
             href={"/"}
