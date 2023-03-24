@@ -1,4 +1,5 @@
 import HeroCards from "@/components/hero-cards";
+import MusicPlaylist from "@/components/music-component";
 import Wrapper from "@/components/navbar-wrapper";
 import NewsLetterInput from "@/components/news-letter-input";
 import { reviewEachPageDetails, heroCards } from "@/utils/mockdata";
@@ -64,6 +65,7 @@ const ReviewsDetailsPage = ({ content }: ReviewsDetailsPageProps) => {
           />
         </section>
         <section className="text-lg">{content.desc3}</section>
+        <MusicPlaylist img={content.img} title={content.title} />
         <section className="my-24">
           <h2 className="font-bold text-2xl border-b pb-4 border-[#E7E7E7] dark:border-textColor  mt-12">
             More Stories
