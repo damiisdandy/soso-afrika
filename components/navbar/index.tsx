@@ -3,16 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import ToggleSwitch from "../switch";
 import { useRouter } from "next/router";
-import CompanyLogo from "../../assets/img/cmpanylogo.png";
+import CompanyLogo from "../../assets/img/companylogo.png";
 import DropDown from "../music-dropdown";
 
 const Header = () => {
   const router = useRouter();
   return (
     <nav className="flex justify-between px-8 items-center dark:bg-darkBg">
-      <div>
+      <div onClick={() => router.push("/")}>
         <Image src={CompanyLogo} alt="Company Logo" height={90} width={100} />
       </div>
+
       <ul className="flex gap-6 items-center text-textColor dark:text-darkModeText mr-6">
         <li>
           <Link

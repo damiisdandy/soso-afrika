@@ -1,9 +1,10 @@
 import { Menu, Transition } from "@headlessui/react";
-import Image from "next/image";
 import ArrowDown from "../../assets/svg/arrow-down.svg";
 import { Fragment } from "react";
+import { useRouter } from "next/router";
 
 export default function DropDown() {
+  const router = useRouter();
   return (
     <div className="">
       <Menu as="div" className="relative inline-block text-left">
@@ -27,6 +28,7 @@ export default function DropDown() {
               <Menu.Item>
                 {({ active }) => (
                   <button
+                    onClick={() => router.push("/reviews")}
                     className={`${
                       active ? "bg-switchLight" : ""
                     }  px-2 py-2 text-sm  w-full text-left`}
