@@ -3,18 +3,9 @@ import InstagramIcon from "../assets/svg/instagram.svg";
 import FaceBookIcon from "../assets/svg/facebook.svg";
 import TwitterIcon from "../assets/svg/twitter.svg";
 import HeroCards from "@/components/hero-cards";
-import HeroCard1 from "../assets/img/hero-card1.png";
-import HeroCard2 from "../assets/img/hero-card2.png";
-import HeroCard3 from "../assets/img/hero-card3.png";
-import HeroCard4 from "../assets/img/hero-card4.png";
+import { heroCards } from "@/utils/mockdata";
 import Wrapper from "@/components/navbar-wrapper";
 
-const heroCards = [
-  { title: "ALL HAIL THE KING OF AMAPIANO: Kabza De Small", img: HeroCard1 },
-  { img: HeroCard2 },
-  { img: HeroCard4 },
-  { img: HeroCard3 }
-];
 export default function Home() {
   return (
     <>
@@ -24,7 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="text-[#fff]">
         <Wrapper>
           <section className="bg-[url('../assets/img/hero.png')] h-[90vh] flex">
             <aside className="w-[4rem] flex flex-col gap-6 justify-end mx-10 mb-12">

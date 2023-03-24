@@ -3,11 +3,12 @@ import ReviewsCard from "@/components/reviews-card";
 import { reviewCardsContent } from "@/utils/mockdata";
 import ArrowDown from "../../assets/svg/arrow-down-long.svg";
 import React from "react";
+import NewsLetterInput from "@/components/news-letter-input";
 
 const ReviewsPage = () => {
   return (
     <Wrapper>
-      <main className="max-w-[1320px] mx-auto  text-textColor dark:bg-main dark:text-[#fff]">
+      <main className="max-w-[1320px] mx-auto  text-textColor dark:bg-main dark:text-[#fff] mb-8">
         <h2 className="font-bold text-2xl border-b pb-8 border-[#E7E7E7] dark:border-textColor ">
           Reviews
         </h2>
@@ -26,12 +27,13 @@ const ReviewsPage = () => {
           See Older Stories <ArrowDown className="dark:fill-[#fff]" />
         </section>
         <section>
-          <h2 className="font-bold text-2xl border-b pb-4 border-[#E7E7E7] dark:border-textColor ">
+          <h2 className="font-bold text-2xl border-b pb-4 border-[#E7E7E7] dark:border-textColor  mt-12">
             Subscribe
           </h2>
           <h3 className="text-center text-2xl font-bold uppercase mt-10">
             Sign up to new letter pop up
           </h3>
+          <NewsLetterInput />
         </section>
       </main>
     </Wrapper>
