@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   darkMode: "class",
   content: [
@@ -10,6 +11,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
+    theme: {},
     extend: {
       //backgroundImage: { heroImg: "url('./assets/img/hero.png')" },
     },
@@ -21,12 +23,17 @@ module.exports = {
       textColor: "#333333",
       darkBg: "#181818",
       darkModeText: "#fff",
-      orange: "#D14428"
+      orange: "#D14428",
+      black: "#000",
+      white: "#fff",
+      formBg: "#ECECEC",
+      homeBorder: "#403B39",
+      reviewsBorder: "#E7E7E7"
     },
     fontFamily: {
       sans: ["Open Sans", "sans-serif"]
     }
   },
 
-  plugins: []
+  plugins: [require("tailwind-scrollbar")({ nocompatible: true })]
 };

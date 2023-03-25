@@ -1,20 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ToggleSwitch from "../switch";
 import { useRouter } from "next/router";
-import CompanyLogo from "../../assets/img/companylogo.png";
+import ToggleSwitch from "../switch";
 import DropDown from "../music-dropdown";
+import CompanyLogo from "@/assets/img/companylogo.png";
+import ModalForNavigation from "../modal-phone";
+
+const headerHideThreshold = 400;
 
 const Header = () => {
+  const [headerVisible, setHeaderVisible] = useState(true);
+
+  useEffect(() => {
+    let prevScrollVal: number;
+
+    function handleScroll() {
+      const currentScroll = window.scrollY;
+
+      if (typeof prevScrollVal !== "number") {
+        prevScrollVal = currentScroll;
+        return;
+      }
+      // console.log(prevScrollVal, currentScroll);
+
+      const direction = currentScroll > prevScrollVal ? "down" : "up";
+      // console.log(direction);
+      if (headerVisible && direction === "down") {
+        if (currentScroll < headerHideThreshold) return;
+        setHeaderVisible(false);
+        // console.log(headerVisible);
+      } else if (!headerVisible && direction === "up") {
+        setHeaderVisible(true);
+        // console.log(headerVisible);
+      }
+      prevScrollVal = currentScroll;
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [headerVisible]);
+
   const router = useRouter();
   return (
-    <nav className="flex justify-between px-8 items-center dark:bg-darkBg">
-      <div onClick={() => router.push("/")}>
+    <nav
+      className={` z-50 flex justify-between sm:px-8 items-center bg-white w-full dark:bg-darkBg sticky top-0 transition duration-300 ease-in ${
+        headerVisible ? "translate-y-0" : "translate-y-[-100%]"
+      }`}
+    >
+      <div onClick={() => router.push("/")} className="cursor-pointer">
         <Image src={CompanyLogo} alt="Company Logo" height={90} width={100} />
       </div>
 
-      <ul className="flex gap-6 items-center text-textColor dark:text-darkModeText mr-6">
+      <ul className="hidden sm:flex gap-6 items-center text-textColor dark:text-darkModeText mr-6">
         <li>
           <Link
             href={"/"}
@@ -35,6 +74,7 @@ const Header = () => {
           <ToggleSwitch />
         </li>
       </ul>
+      <ModalForNavigation />
     </nav>
   );
 };

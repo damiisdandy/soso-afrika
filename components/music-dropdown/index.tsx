@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import ArrowDown from "../../assets/svg/arrow-down.svg";
+import ArrowDown from "@/assets/svg/arrow-down.svg";
 import { Fragment } from "react";
 import { useRouter } from "next/router";
 
@@ -11,7 +11,7 @@ export default function DropDown() {
         <div>
           <Menu.Button className="inline-flex gap-2 items-center">
             Music
-            <ArrowDown className="dark:fill-[#fff]" />
+            <ArrowDown className="dark:fill-white" />
           </Menu.Button>
         </div>
         <Transition
@@ -23,14 +23,14 @@ export default function DropDown() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 w-[9rem] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
+          <Menu.Items className="absolute right-0 mt-2 w-[9rem] origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-textColor shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ">
             <div className=" py-1 ">
               <Menu.Item>
                 {({ active }) => (
                   <button
                     onClick={() => router.push("/reviews")}
                     className={`${
-                      active ? "bg-switchLight" : ""
+                      active ? "bg-switchLight  dark:bg-switch" : ""
                     }  px-2 py-2 text-sm  w-full text-left`}
                   >
                     Reviews
@@ -41,7 +41,7 @@ export default function DropDown() {
                 {({ active }) => (
                   <button
                     className={`${
-                      active ? "bg-switchLight" : ""
+                      active ? "bg-switchLight dark:bg-switch" : ""
                     }  px-2 py-2 text-sm  w-full text-left`}
                   >
                     Features
@@ -52,7 +52,7 @@ export default function DropDown() {
                 {({ active }) => (
                   <button
                     className={`${
-                      active ? "bg-switchLight" : ""
+                      active ? "bg-switchLight dark:bg-switch" : ""
                     }  px-2 py-2 text-sm  w-full text-left`}
                   >
                     Videos
@@ -63,7 +63,7 @@ export default function DropDown() {
                 {({ active }) => (
                   <button
                     className={`${
-                      active ? "bg-switchLight" : ""
+                      active ? "bg-switchLight dark:bg-switch" : ""
                     }  px-2 py-2 text-sm  w-full text-left`}
                   >
                     PSST! New stuff
