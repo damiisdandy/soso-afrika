@@ -7,7 +7,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
 
     // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -21,11 +21,12 @@ module.exports = {
       textColor: "#333333",
       darkBg: "#181818",
       darkModeText: "#fff",
+      orange: "#D14428"
     },
     fontFamily: {
-      sans: ["Open Sans", "sans-serif"],
-    },
+      sans: ["Open Sans", "sans-serif"]
+    }
   },
 
-  plugins: [],
+  plugins: []
 };
