@@ -3,27 +3,11 @@ import MusicPlaylist from "@/components/music-component";
 import Wrapper from "@/components/navbar-wrapper";
 import NewsLetterInput from "@/components/news-letter-input";
 import { reviewEachPageDetails, heroCards } from "@/utils/mockdata";
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 
-export const getStaticPaths = async () => {
-  //some asynchronous operation to a backend service maybe if available to get the amount of review on the data
-  const data = ["1", "2", "3", "4"];
-
-  // map data to an array of path objects with params (id)
-  const paths = data.map((path) => {
-    return {
-      params: { id: path }
-    };
-  });
-
-  return {
-    paths,
-    fallback: false
-  };
-};
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   //some asynchronous operation to a backend service maybe if available
   return { props: { content: reviewEachPageDetails } };
 };
@@ -43,34 +27,34 @@ const ReviewsDetailsPage = ({ content }: ReviewsDetailsPageProps) => {
   console.log(content);
   return (
     <Wrapper>
-      <main className="max-w-[1320px] mx-auto  text-textColor dark:bg-main dark:text-[#fff] mb-8">
+      <main className="max-w-[1320px] mx-auto px-4 text-textColor dark:bg-main dark:text-white mb-8 mt-8">
         <h1 className="font-extrabold text-xl mb-4 ">{content.title}</h1>
         <section className="flex justify-center mb-6">
           <Image
             src={content.img}
             alt={`illustrator for  ${content.title} `}
-            className="w-[70rem] h-[35rem]"
+            className=" w-[35rem] sm:w-[50rem] xl:w-[70rem] h-[20rem] sm:h-[25rem] md:h-[35rem]"
           />
         </section>
-        <section className="">
+        <section className="md:mb-4 lg:mb-0 ">
           <h2 className="font-bold text-xl mb-8">-{content.creator}</h2>
           <p className="font-normal text-lg">{content.desc1}</p>
         </section>
-        <section className="flex gap-6 mb-10">
+        <section className="flex gap-6 mb-6 flex-col md:flex-row">
           <p className="text-lg self-end">{content.desc2}</p>
           <Image
             src={content.img}
             alt={`video to illustrate  ${content.title}`}
-            className="w-[80%]"
+            className="lg:w-[80%] lg:h-[15rem] md:w-[24rem] md:h-[20rem] mx-auto"
           />
         </section>
         <section className="text-lg">{content.desc3}</section>
         <MusicPlaylist img={content.img} title={content.title} />
         <section className="my-24">
-          <h2 className="font-bold text-2xl border-b pb-4 border-[#E7E7E7] dark:border-textColor  mt-12">
+          <h2 className="font-bold text-2xl border-b pb-4 border-reviewsBorder dark:border-textColor  mt-12">
             More Stories
           </h2>
-          <div className="flex gap-8 mt-8">
+          <div className="flex gap-8 mt-8 text-white overflow-scroll scrollbar-none">
             {heroCards.map((heroCard, id) => (
               <HeroCards
                 key={id}
@@ -81,10 +65,10 @@ const ReviewsDetailsPage = ({ content }: ReviewsDetailsPageProps) => {
           </div>
         </section>
         <section>
-          <h2 className="font-bold text-2xl border-b pb-4 border-[#E7E7E7] dark:border-textColor  mt-12">
+          <h2 className="font-bold text-2xl border-b pb-4 border-reviewsBorder dark:border-textColor  mt-12">
             Subscribe
           </h2>
-          <h3 className="text-center text-2xl font-bold uppercase mt-10">
+          <h3 className="text-center text-xl md:text-2xl font-bold uppercase mt-10">
             Sign up to new letter pop up
           </h3>
           <NewsLetterInput />

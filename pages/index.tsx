@@ -1,10 +1,13 @@
 import Head from "next/head";
-import InstagramIcon from "../assets/svg/instagram.svg";
-import FaceBookIcon from "../assets/svg/facebook.svg";
-import TwitterIcon from "../assets/svg/twitter.svg";
+
 import HeroCards from "@/components/hero-cards";
 import { heroCards } from "@/utils/mockdata";
 import Wrapper from "@/components/navbar-wrapper";
+import {
+  TwitterIcon,
+  InstagramIcon,
+  FaceBookIcon
+} from "@/assets/assets.export";
 
 export default function Home() {
   return (
@@ -15,30 +18,30 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="text-[#fff]">
+      <main className="text-white">
         <Wrapper>
-          <section className="bg-[url('../assets/img/hero.png')] h-[90vh] flex">
-            <aside className="w-[4rem] flex flex-col gap-6 justify-end mx-10 mb-12">
+          <section className="bg-[url('../assets/img/mobile-hero.png')] md:bg-[url('../assets/img/hero.png')] h-[100vh] bg-cover bg-no-repeat flex flex-col md:flex-row">
+            <aside className="md:w-[4rem] flex md:flex-col justify-center gap-10 mt-[20%] md:mt-0 md:gap-6 md:justify-end mx-10 mb-12">
               <InstagramIcon />
               <TwitterIcon />
               <FaceBookIcon />
             </aside>
-            <div className="border-l border-[#403B39] px-[3rem] mt-[5rem] mb-[3rem]">
-              <h1 className="text-header font-extrabold text-6xl mt-[4rem]">
+            <div className="md:border-l border-homeBorder mt-4 md:mt-[5rem] mb-[3rem] md:overflow-x-hidden">
+              <h1 className="text-header font-extrabold text-4xl md:text-6xl md:mt-[4rem] px-[3rem] text-center md:text-left">
                 WE SOKO AFRIKA
               </h1>
-              <p className="mt-8 uppercase text-lg w-[90%]">
+              <p className="mt-8 uppercase text-md md:text-lg w-[100%] lg:w-[90%] px-[3rem] text-center md:text-left">
                 We Soko Afrika translates to We ‘Market’ Afrika. (Soko being
                 Swahili). Honestly? we are here to use every opportunity to
                 celebrate Afrika. Through her music, her culture, her people,
                 her food, her fashion, her entrepreneurs, her possibilities and
                 her passions!
               </p>
-              <section className="flex gap-2 mt-[5rem] relative">
-                <h2 className="font-bold text-2xl rotate-[270deg] h-fit w-[12rem] absolute top-[12rem] left-[-6rem]">
+              <section className="flex flex-col md:flex-row gap-2 mt-[5rem] relative ml-4 md:ml-12 scrollbar-none">
+                <h2 className="font-bold text-2xl md:rotate-[270deg] h-fit w-[12rem] md:absolute top-[7rem] xl:top-[12rem] left-[-6rem] mb-6 md:mb-0">
                   Top Stories
                 </h2>
-                <div className="flex gap-2 ml-12">
+                <div className="flex gap-4 xl:gap-6 md:ml-12 overflow-x-scroll scrollbar-none">
                   {heroCards.map((heroCard, id) => (
                     <HeroCards
                       key={id}

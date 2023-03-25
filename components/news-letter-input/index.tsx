@@ -5,17 +5,20 @@ const NewsLetterInput = () => {
     e.preventDefault();
   }
   return (
-    <form onSubmit={handleSubmit} className="flex justify-center mt-8 gap-4">
+    <form
+      onSubmit={handleSubmit}
+      className="flex justify-center mt-8 gap-4 mx-4 sm:mx-0"
+    >
       <input
         type="email"
         name="soso-email"
-        className="bg-[#ECECEC] w-[25rem] p-4 rounded-lg"
+        className="bg-formBg w-[25rem] p-3 sm:p-4 rounded-lg"
         placeholder="Email address"
       />
       <button
         type="submit"
         title="subscribe"
-        className="bg-header rounded-lg px-14 text-[#fff] font-bold"
+        className="bg-header rounded-lg px-6 sm:px-14 text-white font-bold"
       >
         Subscribe
       </button>

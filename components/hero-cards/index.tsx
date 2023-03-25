@@ -8,10 +8,13 @@ type HerocardProps = {
 const HeroCards: React.FC<HerocardProps> = ({ img, title }) => {
   return (
     <div className="relative">
-      <Image src={img} alt={`${title} image`} className="w[322px] h-[303px]" />
-      <h2 className="w-[15rem] absolute bottom-20 left-10 font-bold">
-        {title}
-      </h2>
+      <Image
+        src={img}
+        alt={`${title} image`}
+        // className="w-full h-auto"
+        className="min-w-[322px] h-[303px] xl:h-[254px]"
+      />
+      <h2 className="p-3 absolute bottom-20 left-6 font-bold">{title}</h2>
     </div>
   );
 };
