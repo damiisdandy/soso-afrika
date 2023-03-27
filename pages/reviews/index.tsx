@@ -13,7 +13,7 @@ const ReviewsPage = () => {
           Reviews
         </h2>
         <section className="mt-12 flex lg:gap-8 xl:gap-0 justify-center flex-wrap gap-y-16 xl:gap-y-14">
-          {reviewCardsContent.map((cardContent, idx) => (
+          {reviewCardsContent?.map((cardContent, idx) => (
             <ReviewsCard
               key={idx}
               img={cardContent.img}
