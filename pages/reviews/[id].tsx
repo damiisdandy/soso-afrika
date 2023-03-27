@@ -4,6 +4,7 @@ import Wrapper from "@/components/navbar-wrapper";
 import NewsLetterInput from "@/components/news-letter-input";
 import { reviewEachPageDetails, heroCards } from "@/utils/mockdata";
 import { GetServerSideProps, GetStaticProps } from "next";
+import Head from "next/head";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 
@@ -27,6 +28,9 @@ const ReviewsDetailsPage = ({ content }: ReviewsDetailsPageProps) => {
   console.log(content);
   return (
     <Wrapper>
+      <Head>
+        <title>SOSO AFRIKA -Reviews Details</title>
+      </Head>
       <main className="max-w-[1320px] mx-auto px-4 text-textColor dark:bg-main dark:text-white mb-8 mt-8">
         <h1 className="font-extrabold text-xl mb-4 ">{content.title}</h1>
         <section className="flex justify-center mb-6">

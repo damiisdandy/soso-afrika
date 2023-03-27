@@ -3,7 +3,7 @@ import ArrowDown from "@/assets/svg/arrow-down.svg";
 import { Fragment, MouseEvent } from "react";
 import { useRouter } from "next/router";
 
-export default function DropDown() {
+export default function DropDown({ active }: { active: boolean }) {
   const router = useRouter();
 
   const handleReviewsNavigation = (e: MouseEvent) => {
@@ -14,7 +14,11 @@ export default function DropDown() {
     <div className="">
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex gap-2 items-center">
+          <Menu.Button
+            className={`inline-flex gap-2 items-center ${
+              active && "font-bold"
+            }`}
+          >
             Music
             <ArrowDown className="dark:fill-white" />
           </Menu.Button>
