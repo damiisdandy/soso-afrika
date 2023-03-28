@@ -1,15 +1,24 @@
 import { Menu, Transition } from "@headlessui/react";
 import ArrowDown from "@/assets/svg/arrow-down.svg";
-import { Fragment } from "react";
+import { Fragment, MouseEvent } from "react";
 import { useRouter } from "next/router";
 
-export default function DropDown() {
+export default function DropDown({ active }: { active: boolean }) {
   const router = useRouter();
+
+  const handleReviewsNavigation = (e: MouseEvent) => {
+    e.preventDefault();
+    router.push("/reviews");
+  };
   return (
     <div className="">
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex gap-2 items-center">
+          <Menu.Button
+            className={`inline-flex gap-2 items-center ${
+              active && "font-bold"
+            }`}
+          >
             Music
             <ArrowDown className="dark:fill-white" />
           </Menu.Button>
@@ -28,7 +37,8 @@ export default function DropDown() {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    onClick={() => router.push("/reviews")}
+                    onClick={handleReviewsNavigation}
+                    type="button"
                     className={`${
                       active ? "bg-switchLight  dark:bg-switch" : ""
                     }  px-2 py-2 text-sm  w-full text-left`}

@@ -43,6 +43,7 @@ const Header = () => {
   }, [headerVisible]);
 
   const router = useRouter();
+  const menuActive = router.pathname === "/reviews";
   return (
     <nav
       className={` z-50 flex justify-between sm:px-8 items-center bg-white w-full dark:bg-darkBg sticky top-0 transition duration-300 ease-in ${
@@ -64,7 +65,7 @@ const Header = () => {
         </li>
         <li>
           <Link href={"#"} className={`flex items-center gap-2`}>
-            <DropDown />
+            <DropDown active={menuActive} />
           </Link>
         </li>
         <li>
