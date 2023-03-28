@@ -31,28 +31,28 @@ const ReviewsDetailsPage = ({ content }: ReviewsDetailsPageProps) => {
       <Head>
         <title>SOSO AFRIKA -Reviews Details</title>
       </Head>
-      <main className="max-w-[1320px] mx-auto px-4 text-textColor dark:bg-main dark:text-white mb-8 mt-8">
+      <main className="max-w-[1320px] mx-auto px-4 text-textColor dark:bg-main dark:text-white mb-8 mt-[7rem]">
         <h1 className="font-extrabold text-xl mb-4 ">{content.title}</h1>
         <section className="flex justify-center mb-6">
           <Image
             src={content.img}
             alt={`illustrator for  ${content.title} `}
-            className=" w-[35rem] sm:w-[50rem] xl:w-[70rem] h-[20rem] sm:h-[25rem] md:h-[35rem]"
+            className=" w-[35rem] sm:w-[50rem] xl:w-[70rem] h-[15rem] sm:h-[25rem] md:h-[35rem]"
           />
         </section>
         <section className="md:mb-4 lg:mb-0 ">
           <h2 className="font-bold text-xl mb-8">-{content.creator}</h2>
-          <p className="font-normal text-lg">{content.desc1}</p>
+          <p className="font-normal text-lg leading-7">{content.desc1}</p>
         </section>
         <section className="flex gap-6 mb-6 flex-col md:flex-row">
-          <p className="text-lg self-end">{content.desc2}</p>
+          <p className="text-lg self-end leading-7">{content.desc2}</p>
           <Image
             src={content.img}
             alt={`video to illustrate  ${content.title}`}
             className="lg:w-[80%] lg:h-[15rem] md:w-[24rem] md:h-[20rem] mx-auto"
           />
         </section>
-        <section className="text-lg">{content.desc3}</section>
+        <section className="text-lg leading-7">{content.desc3}</section>
         <MusicPlaylist img={content.img} title={content.title} />
         <section className="my-24">
           <h2 className="font-bold text-2xl border-b pb-4 border-reviewsBorder dark:border-textColor  mt-12">

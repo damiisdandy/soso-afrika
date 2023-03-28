@@ -56,7 +56,7 @@ export default function ModalForNavigation() {
                   <div className="mt-[30vh]">
                     <Dialog.Title
                       as="h3"
-                      className="text-4xl mb-12 font-normal leading-6 text-gray-900"
+                      className="text-2xl mb-12 font-normal leading-6 text-gray-900"
                     >
                       <Link
                         href={"/"}
@@ -69,19 +69,19 @@ export default function ModalForNavigation() {
                     </Dialog.Title>
                     <Dialog.Title
                       as="h3"
-                      className="text-4xl mb-12 font-normal leading-6 text-gray-900"
+                      className="text-2xl mb-12 font-normal leading-6 text-gray-900"
                     >
                       Music
                     </Dialog.Title>
                     <Dialog.Title
                       as="h3"
-                      className="text-4xl mb-12 font-normal leading-6 text-gray-900"
+                      className="text-2xl mb-12 font-normal leading-6 text-gray-900"
                     >
                       Who we be
                     </Dialog.Title>
                     <Dialog.Title
                       as="h3"
-                      className="text-4xl mb-12 font-normal leading-6 text-gray-900"
+                      className="text-2xl mb-12 font-normal leading-6 text-gray-900"
                     >
                       <ToggleSwitch />
                     </Dialog.Title>

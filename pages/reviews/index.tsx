@@ -13,7 +13,7 @@ const ReviewsPage = () => {
         <title>SOSO AFRIKA -Reviews</title>
       </Head>
       <Wrapper>
-        <main className="max-w-[1320px] mx-auto  text-textColor dark:bg-main dark:text-white mb-8 mt-8">
+        <main className="max-w-[1320px] mx-auto  text-textColor dark:bg-main dark:text-white mb-8 mt-[7rem]">
           <h2 className="font-bold mx-4 sm:mx-10 text-2xl border-b pb-8 border-reviewsBorder dark:border-textColor ">
             Reviews
           </h2>
@@ -28,14 +28,14 @@ const ReviewsPage = () => {
               />
             ))}
           </section>
-          <section className="flex items-center justify-end gap-4 mt-12 font-bold text-xl mx-10">
+          <section className="flex items-center justify-end gap-4 mt-12 sm:mt-[7rem] font-bold text-xl mx-10">
             See Older Stories <ArrowDown className="dark:fill-white" />
           </section>
           <section>
             <h2 className="font-bold text-2xl border-b pb-4 mx-4 sm:mx-10 border-reviewsBorder dark:border-textColor  mt-12">
               Subscribe
             </h2>
-            <h3 className="text-center text-2xl font-bold uppercase mt-10">
+            <h3 className="text-center text-xl sm:text-2xl font-bold uppercase mt-14">
               Sign up to new letter pop up
             </h3>
             <NewsLetterInput />
