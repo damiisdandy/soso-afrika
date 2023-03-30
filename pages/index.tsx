@@ -39,7 +39,7 @@ export default function Home() {
                   and her passions!
                 </p>
                 <section className="flex flex-col md:flex-row gap-2 mt-[7rem] sm:mt-[5rem] relative ml-4 md:ml-12 scrollbar-none">
-                  <h2 className="font-bold text-2xl md:rotate-[270deg] h-fit w-[12rem] md:absolute top-[7rem] xl:top-[8m] left-[-6rem] mb-6 md:mb-0">
+                  <h2 className="font-bold text-2xl md:rotate-[270deg] h-fit w-[12rem] md:absolute top-[7rem] xl:top-[8.7rem] left-[-6rem] mb-6 md:mb-0">
                     Top Stories
                   </h2>
                   <div className="flex gap-4 xl:gap-6 md:ml-12 overflow-x-scroll scrollbar-none">
