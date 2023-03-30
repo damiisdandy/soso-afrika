@@ -38,7 +38,7 @@ export default function Home() {
                   her food, her fashion, her entrepreneurs, her possibilities
                   and her passions!
                 </p>
-                <section className="flex flex-col md:flex-row gap-2 mt-[7rem] sm:mt-[5rem] relative ml-4 md:ml-12 scrollbar-none">
+                <section className="flex pb-12 flex-col md:flex-row gap-2 mt-[7rem] sm:mt-[5rem] relative ml-4 md:ml-12 scrollbar-none">
                   <h2 className="font-bold text-2xl md:rotate-[270deg] h-fit w-[12rem] md:absolute top-[11.3rem] xl:top-[8.7rem] left-[-6rem] mb-6 md:mb-0">
                     Top Stories
                   </h2>
