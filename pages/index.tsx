@@ -18,9 +18,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="text-white">
+      <main className="text-white ">
         <Wrapper>
-          <section className="bg-[url('../assets/img/mobile-hero.png')] md:bg-[url('../assets/img/hero.png')] h-[100%] bg-cover bg-no-repeat w-[100vw] ">
+          <section className="bg-[url('../assets/img/mobile-hero.png')] md:bg-[url('../assets/img/hero.png')] max-h-[100%] min-h-[100vh] bg-cover bg-no-repeat w-[100vw] ">
             <div className=" flex flex-col md:flex-row 2xl:max-w-[100rem] 2xl:h-fit 2xl:mx-auto ">
               <aside className="md:w-[4rem] flex md:flex-col justify-center gap-10 mt-[7rem] md:mt-0 md:gap-6 md:justify-end mx-10 mb-12">
                 <InstagramIcon />
