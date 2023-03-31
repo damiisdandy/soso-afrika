@@ -4,6 +4,7 @@ import Spotify from "./svg/spotify.svg";
 //review cards exports
 import Ellipse from "./svg/ellipse.svg";
 import ArrowRight from "./svg/arrow-right.svg";
+import ArrowDown from "./svg/arrow-down.svg";
 
 //home page exports
 import InstagramIcon from "./svg/instagram.svg";
@@ -16,5 +17,6 @@ export {
   ArrowRight,
   TwitterIcon,
   FaceBookIcon,
+  ArrowDown,
   InstagramIcon
 };
