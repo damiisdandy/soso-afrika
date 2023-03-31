@@ -9,6 +9,7 @@ import {
   TwitterIcon,
   FaceBookIcon
 } from "@/assets/assets.export";
+import NavDisclosure from "../nav-disclosure";
 
 export default function ModalForNavigation() {
   let [isOpen, setIsOpen] = useState(false);
@@ -41,8 +42,8 @@ export default function ModalForNavigation() {
             <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex inset-0 min-h-full bg-white dark:bg-darkBg ">
+          <div className="fixed inset-0 overflow-y-auto bg-white dark:bg-darkBg ">
+            <div className="flex inset-0 min-h-full ">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -67,12 +68,7 @@ export default function ModalForNavigation() {
                         Home
                       </Link>
                     </Dialog.Title>
-                    <Dialog.Title
-                      as="h3"
-                      className="text-2xl mb-12 font-normal leading-6 text-gray-900"
-                    >
-                      Music
-                    </Dialog.Title>
+                    <NavDisclosure />
                     <Dialog.Title
                       as="h3"
                       className="text-2xl mb-12 font-normal leading-6 text-gray-900"
@@ -86,7 +82,7 @@ export default function ModalForNavigation() {
                       <ToggleSwitch />
                     </Dialog.Title>
                   </div>
-                  <div className="flex flex-1 gap-6 items-end">
+                  <div className="flex flex-1 gap-6 items-end pb-8">
                     <InstagramIcon className="fill-black dark:fill-white " />
                     <FaceBookIcon className="fill-black dark:fill-white" />
                     <TwitterIcon className="fill-black dark:fill-white" />
