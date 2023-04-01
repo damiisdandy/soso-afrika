@@ -1,13 +1,31 @@
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import ToggleSwitch from "@/components/switch";
+import ModeSwitch from "@/components/mode-switch";
 import DropDown from "@/components/music-dropdown";
 import CompanyLogo from "@/assets/img/companylogo.png";
-import ModalForNavigation from "@/components/sidebar";
+import Sidebar from "@/components/sidebar";
 
-const headerHideThreshold = 400;
+const HEADER_TRESHOLD = 400;
+
+type NavLinkProps = {
+  href: string;
+  children: ReactNode;
+};
+
+const NavLink = ({ href, children }: NavLinkProps) => {
+  const router = useRouter();
+
+  return (
+    <Link
+      href={href}
+      className={`${router.pathname === href ? "font-bold" : ""}`}
+    >
+      {children}
+    </Link>
+  );
+};
 
 const Header = () => {
   const [headerVisible, setHeaderVisible] = useState(true);
@@ -25,13 +43,14 @@ const Header = () => {
 
       const direction = currentScroll > prevScrollVal ? "down" : "up";
       if (headerVisible && direction === "down") {
-        if (currentScroll < headerHideThreshold) return;
+        if (currentScroll < HEADER_TRESHOLD) return;
         setHeaderVisible(false);
       } else if (!headerVisible && direction === "up") {
         setHeaderVisible(true);
       }
       prevScrollVal = currentScroll;
     }
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -42,38 +61,34 @@ const Header = () => {
   const menuActive = router.pathname === "/reviews";
   return (
     <nav
-      className={` z-50 sm:px-8 items h-[5rem] bg-white w-full dark:bg-darkBg fixed top-0 transition duration-300 ease-in ${
+      className={`z-50 p-3 px-4 sm:px-8 flex items-center justify-between bg-white w-full dark:bg-darkBg fixed top-0 transition duration-300 ease-in ${
         headerVisible ? "translate-y-0" : "translate-y-[-100%]"
       }`}
     >
-      <div className="flex justify-between items-center 2xl:w-[100rem] xl:mx-auto">
-        <div onClick={() => router.push("/")} className="cursor-pointer">
-          <Image src={CompanyLogo} alt="Company Logo" height={90} width={100} />
-        </div>
+      <Image
+        src={CompanyLogo}
+        alt="Company Logo"
+        placeholder="blur"
+        className="w-10 h-10 cursor-pointer"
+        onClick={() => router.push("/")}
+      />
 
-        <ul className="hidden sm:flex gap-6 items-center text-textColor dark:text-darkModeText mr-6">
-          <li>
-            <Link
-              href={"/"}
-              className={`${router.pathname === "/" ? "font-bold" : ""}`}
-            >
-              Home{" "}
-            </Link>
-          </li>
-          <li>
-            <Link href={"#"} className={`flex items-center gap-2`}>
-              <DropDown active={menuActive} />
-            </Link>
-          </li>
-          <li>
-            <Link href={"#"}>Who we be </Link>
-          </li>
-          <li>
-            <ToggleSwitch />
-          </li>
-        </ul>
-        <ModalForNavigation />
-      </div>
+      <ul className="hidden sm:flex gap-14 items-center text-textColor dark:text-darkModeText">
+        <li>
+          <NavLink href={"/"}>Home</NavLink>
+        </li>
+        <li>
+          <DropDown urlActive={menuActive} />
+        </li>
+        <li>
+          <NavLink href="/about">Who we be</NavLink>
+        </li>
+        <li>
+          <ModeSwitch />
+        </li>
+      </ul>
+
+      <Sidebar />
     </nav>
   );
 };

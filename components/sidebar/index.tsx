@@ -1,24 +1,28 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import Hamburger from "@/assets/svg/hamburger.svg";
-import ToggleSwitch from "@/components/switch";
+import ToggleSwitch from "@/components/mode-switch";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { InstagramIcon, TwitterIcon, FaceBookIcon } from "@/assets";
 import NavDisclosure from "@/components/nav-disclosure";
 import { useDisclosure } from "@/hooks/useDisclosure";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
 
 export default function Sidebar() {
-  const { isOpen, onClose, onOpen } = useDisclosure(false);
-
+  const { isOpen, onClose, toggleOpen } = useDisclosure(false);
   const router = useRouter();
 
   return (
     <>
-      <div className="mr-6 sm:hidden" onClick={onOpen}>
-        <Hamburger className="stroke-black dark:stroke-white" />
+      <div className="mr-6 sm:hidden" onClick={toggleOpen}>
+        {isOpen ? (
+          <IoMdClose className="stroke-black dark:stroke-white text-3xl" />
+        ) : (
+          <RxHamburgerMenu className="stroke-black dark:stroke-white text-2xl" />
+        )}
       </div>
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={onClose}>
           <Transition.Child
