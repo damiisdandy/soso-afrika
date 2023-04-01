@@ -1,31 +1,26 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import Hamburger from "@/assets/svg/hamburger.svg";
-import ToggleSwitch from "../switch";
+import ToggleSwitch from "@/components/switch";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { InstagramIcon, TwitterIcon, FaceBookIcon } from "@/assets";
-import NavDisclosure from "../nav-disclosure";
+import NavDisclosure from "@/components/nav-disclosure";
+import { useDisclosure } from "@/hooks/useDisclosure";
 
-export default function ModalForNavigation() {
-  let [isOpen, setIsOpen] = useState(false);
+export default function Sidebar() {
+  const { isOpen, onClose, onOpen } = useDisclosure(false);
+
   const router = useRouter();
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
 
   return (
     <>
-      <div className="mr-6 sm:hidden" onClick={() => setIsOpen(true)}>
+      <div className="mr-6 sm:hidden" onClick={onOpen}>
         <Hamburger className="stroke-black dark:stroke-white" />
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-10" onClose={onClose}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"

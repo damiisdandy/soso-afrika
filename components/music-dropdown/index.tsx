@@ -3,13 +3,18 @@ import ArrowDown from "@/assets/svg/arrow-down.svg";
 import { Fragment, MouseEvent } from "react";
 import { useRouter } from "next/router";
 
-export default function DropDown({ active }: { active: boolean }) {
+type DropDownProps = {
+  active: boolean;
+};
+
+export default function DropDown({ active }: DropDownProps) {
   const router = useRouter();
 
   const handleReviewsNavigation = (e: MouseEvent) => {
     e.preventDefault();
     router.push("/reviews");
   };
+
   return (
     <div className="">
       <Menu as="div" className="relative inline-block text-left">

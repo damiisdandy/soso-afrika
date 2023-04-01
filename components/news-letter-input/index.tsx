@@ -1,9 +1,15 @@
-import React, { FormEvent } from "react";
+import React, { ChangeEventHandler, FormEvent, useState } from "react";
 
 const NewsLetterInput = () => {
-  function handleSubmit(e: FormEvent) {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-  }
+  };
+
+  const handleEmailOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setEmail(e.target.value);
+  };
   return (
     <form
       onSubmit={handleSubmit}
@@ -11,6 +17,8 @@ const NewsLetterInput = () => {
     >
       <input
         type="email"
+        value={email}
+        onChange={handleEmailOnChange}
         name="soso-email"
         className="bg-formBg w-[25rem] p-3 sm:p-4 rounded-lg"
         placeholder="Email address"

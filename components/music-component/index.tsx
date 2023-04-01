@@ -6,6 +6,7 @@ type MusicPlaylistProps = {
   img: StaticImageData;
   title: string;
 };
+
 const MusicPlaylist = ({ img, title }: MusicPlaylistProps) => {
   return (
     <section className="bg-orange rounded-xl p-6 px-4 sm:px-5 xl:px-12 mt-24 text-white">

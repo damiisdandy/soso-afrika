@@ -1,7 +1,11 @@
 import React, { ReactNode } from "react";
 import Header from "../navbar";
 
-const Wrapper = ({ children }: { children: ReactNode }) => {
+type WrapperProps = {
+  children: ReactNode;
+};
+
+const Wrapper = ({ children }: WrapperProps) => {
   return (
     <>
       <Header />

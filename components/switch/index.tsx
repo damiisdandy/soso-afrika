@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import useColorMode from "@/hooks/useColorMode";
+import { useDisclosure } from "@/hooks/useDisclosure";
 
 export default function ToggleSwitch() {
-  const [enabled, setEnabled] = useState(false);
+  const { isOpen: enabled, toggleOpen } = useDisclosure(false);
   const [colorMode, setColorMode] = useColorMode();
 
   const handleToggle = () => {
-    setEnabled((prev) => !prev);
+    toggleOpen();
     setColorMode(colorMode === "light" ? "dark" : "light");
   };
 

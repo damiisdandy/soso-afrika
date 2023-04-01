@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import ToggleSwitch from "../switch";
 import DropDown from "../music-dropdown";
 import CompanyLogo from "@/assets/img/companylogo.png";
-import ModalForNavigation from "../modal-phone";
+import ModalForNavigation from "../sidebar";
 
 const headerHideThreshold = 400;
 
@@ -22,17 +22,13 @@ const Header = () => {
         prevScrollVal = currentScroll;
         return;
       }
-      // console.log(prevScrollVal, currentScroll);
 
       const direction = currentScroll > prevScrollVal ? "down" : "up";
-      // console.log(direction);
       if (headerVisible && direction === "down") {
         if (currentScroll < headerHideThreshold) return;
         setHeaderVisible(false);
-        // console.log(headerVisible);
       } else if (!headerVisible && direction === "up") {
         setHeaderVisible(true);
-        // console.log(headerVisible);
       }
       prevScrollVal = currentScroll;
     }
