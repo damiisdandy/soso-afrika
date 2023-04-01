@@ -1,19 +1,13 @@
-import Head from "next/head";
-
 import HeroCards from "@/components/hero-cards";
 import { heroCards } from "@/utils/mockdata";
 import Wrapper from "@/components/navbar-wrapper";
 import { TwitterIcon, InstagramIcon, FaceBookIcon } from "@/assets";
+import Seo from "@/components/seo";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>SOSO AFRIKA</title>
-        <meta name="description" content="We Market Africa" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Seo title="SOSO AFRIKA" description="We Market Africa" />
       <main className="text-white ">
         <Wrapper>
           <section className="bg-[url('../assets/img/mobile-hero.png')] md:bg-[url('../assets/img/hero.png')] max-h-[100%] min-h-[100vh] bg-cover bg-no-repeat w-[100vw] ">
