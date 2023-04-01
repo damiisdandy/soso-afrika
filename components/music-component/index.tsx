@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
-import { MusicControls, Spotify } from "@/assets/assets.export";
+import { MusicControls, Spotify } from "@/assets";
 
 type MusicPlaylistProps = {
   img: StaticImageData;

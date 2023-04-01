@@ -1,5 +1,5 @@
 import { Disclosure } from "@headlessui/react";
-import { ArrowDown } from "@/assets/assets.export";
+import { ArrowDown } from "@/assets";
 import Link from "next/link";
 
 export default function NavDisclosure() {

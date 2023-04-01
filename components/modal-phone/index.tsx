@@ -4,11 +4,7 @@ import Hamburger from "@/assets/svg/hamburger.svg";
 import ToggleSwitch from "../switch";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {
-  InstagramIcon,
-  TwitterIcon,
-  FaceBookIcon
-} from "@/assets/assets.export";
+import { InstagramIcon, TwitterIcon, FaceBookIcon } from "@/assets";
 import NavDisclosure from "../nav-disclosure";
 
 export default function ModalForNavigation() {

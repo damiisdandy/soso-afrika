@@ -3,11 +3,7 @@ import Head from "next/head";
 import HeroCards from "@/components/hero-cards";
 import { heroCards } from "@/utils/mockdata";
 import Wrapper from "@/components/navbar-wrapper";
-import {
-  TwitterIcon,
-  InstagramIcon,
-  FaceBookIcon
-} from "@/assets/assets.export";
+import { TwitterIcon, InstagramIcon, FaceBookIcon } from "@/assets";
 
 export default function Home() {
   return (

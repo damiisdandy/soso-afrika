@@ -1,13 +1,13 @@
-import ReviewImage1 from "../assets/img/review-card1.png";
-import ReviewImage2 from "../assets/img/review-card2.png";
-import ReviewImage3 from "../assets/img/review-card3.png";
-import ReviewImage4 from "../assets/img/review-card4.png";
+import ReviewImage1 from "@/assets/img/review-card1.png";
+import ReviewImage2 from "@/assets/img/review-card2.png";
+import ReviewImage3 from "@/assets/img/review-card3.png";
+import ReviewImage4 from "@/assets/img/review-card4.png";
 
 //imports for the hero cards image
-import HeroCard1 from "../assets/img/hero-card1.png";
-import HeroCard2 from "../assets/img/hero-card2.png";
-import HeroCard3 from "../assets/img/hero-card3.png";
-import HeroCard4 from "../assets/img/hero-card4.png";
+import HeroCard1 from "@/assets/img/hero-card1.png";
+import HeroCard2 from "@/assets/img/hero-card2.png";
+import HeroCard3 from "@/assets/img/hero-card3.png";
+import HeroCard4 from "@/assets/img/hero-card4.png";
 
 export const reviewCardsContent = [
   {

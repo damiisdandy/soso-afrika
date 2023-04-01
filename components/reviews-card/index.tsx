@@ -1,4 +1,4 @@
-import { Ellipse, ArrowRight } from "@/assets/assets.export";
+import { Ellipse, ArrowRight } from "@/assets";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
