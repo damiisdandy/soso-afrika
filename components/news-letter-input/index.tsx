@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FormEvent, useState } from "react";
+import { ChangeEventHandler, FormEvent, useState } from "react";
 
 const NewsLetterInput = () => {
   const [email, setEmail] = useState("");

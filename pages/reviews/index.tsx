@@ -2,16 +2,14 @@ import Wrapper from "@/components/navbar-wrapper";
 import ReviewsCard from "@/components/reviews-card";
 import { reviewCardsContent } from "@/utils/mockdata";
 import ArrowDown from "@/assets/svg/arrow-down-long.svg";
-import React from "react";
 import NewsLetterInput from "@/components/news-letter-input";
 import Head from "next/head";
+import Seo from "@/components/seo";
 
 const ReviewsPage = () => {
   return (
     <>
-      <Head>
-        <title>SOSO AFRIKA -Reviews</title>
-      </Head>
+      <Seo title="Reviews" description="TODO: Review Text Goes Here" />
       <Wrapper>
         <main className="max-w-[1320px] mx-auto  text-textColor dark:bg-main dark:text-white mb-8 mt-[7rem]">
           <h2 className="font-bold mx-4 sm:mx-10 text-2xl border-b pb-8 border-reviewsBorder dark:border-textColor ">

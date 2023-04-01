@@ -7,7 +7,7 @@ import Seo from "@/components/seo";
 export default function Home() {
   return (
     <>
-      <Seo title="SOSO AFRIKA" description="We Market Africa" />
+      <Seo title="" description="We Market Africa" />
       <main className="text-white ">
         <Wrapper>
           <section className="bg-[url('../assets/img/mobile-hero.png')] md:bg-[url('../assets/img/hero.png')] max-h-[100%] min-h-[100vh] bg-cover bg-no-repeat w-[100vw] ">

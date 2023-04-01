@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import ToggleSwitch from "../switch";
-import DropDown from "../music-dropdown";
+import ToggleSwitch from "@/components/switch";
+import DropDown from "@/components/music-dropdown";
 import CompanyLogo from "@/assets/img/companylogo.png";
-import ModalForNavigation from "../sidebar";
+import ModalForNavigation from "@/components/sidebar";
 
 const headerHideThreshold = 400;
 

@@ -2,16 +2,11 @@ import HeroCards from "@/components/hero-cards";
 import MusicPlaylist from "@/components/music-component";
 import Wrapper from "@/components/navbar-wrapper";
 import NewsLetterInput from "@/components/news-letter-input";
+import Seo from "@/components/seo";
 import { reviewEachPageDetails, heroCards } from "@/utils/mockdata";
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image, { StaticImageData } from "next/image";
-import React from "react";
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  //some asynchronous operation to a backend service maybe if available
-  return { props: { content: reviewEachPageDetails } };
-};
 
 type ReviewsDetailsPageProps = {
   content: {
@@ -25,12 +20,9 @@ type ReviewsDetailsPageProps = {
 };
 
 const ReviewsDetailsPage = ({ content }: ReviewsDetailsPageProps) => {
-  console.log(content);
   return (
     <Wrapper>
-      <Head>
-        <title>SOSO AFRIKA -Reviews Details</title>
-      </Head>
+      <Seo title="TODO: dynamic content" description="TODO: dynamic content" />
       <main className="max-w-[1320px] mx-auto px-4 text-textColor dark:bg-main dark:text-white mb-8 mt-[7rem]">
         <h1 className="font-extrabold text-xl mb-4 ">{content.title}</h1>
         <section className="flex justify-center mb-6">
@@ -83,3 +75,8 @@ const ReviewsDetailsPage = ({ content }: ReviewsDetailsPageProps) => {
 };
 
 export default ReviewsDetailsPage;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  //some asynchronous operation to a backend service maybe if available
+  return { props: { content: reviewEachPageDetails } };
+};

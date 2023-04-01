@@ -11,12 +11,14 @@ interface SeoProps extends NextSeoProps {
 }
 
 const Seo = ({ title, description, image, ...rest }: SeoProps) => {
+  const fullTitle = `SOSO AFRIKA - ${title}`;
   return (
     <>
       <NextSeo
         {...rest}
+        title={fullTitle}
         openGraph={{
-          title,
+          title: fullTitle,
           description,
           images: image ? [{ ...image }] : [],
         }}

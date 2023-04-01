@@ -1,7 +1,6 @@
 import { Ellipse, ArrowRight } from "@/assets";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
 
 type ReviewsCardProps = {
   img: StaticImageData;
