@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import ModeSwitch from "@/components/mode-switch";
-import DropDown from "@/components/music-dropdown";
+import NavMusicDropDown from "@/components/music-dropdown";
 import CompanyLogo from "@/assets/img/companylogo.png";
 import Sidebar from "@/components/sidebar";
+import { useDisclosure } from "@/hooks/useDisclosure";
 
 const HEADER_TRESHOLD = 400;
 
@@ -14,7 +15,7 @@ type NavLinkProps = {
   children: ReactNode;
 };
 
-const NavLink = ({ href, children }: NavLinkProps) => {
+export const NavLink = ({ href, children }: NavLinkProps) => {
   const router = useRouter();
 
   return (
@@ -27,7 +28,9 @@ const NavLink = ({ href, children }: NavLinkProps) => {
   );
 };
 
-const Header = () => {
+const Navbar = () => {
+  const { isOpen: isSidebarOpen, toggleOpen: toggleSidebar } =
+    useDisclosure(false);
   const [headerVisible, setHeaderVisible] = useState(true);
 
   useEffect(() => {
@@ -61,7 +64,7 @@ const Header = () => {
   const menuActive = router.pathname === "/reviews";
   return (
     <nav
-      className={`z-50 p-3 px-4 sm:px-8 flex items-center justify-between bg-white w-full dark:bg-darkBg fixed top-0 transition duration-300 ease-in ${
+      className={`z-50 p-3 px-5 sm:px-8 flex items-center justify-between bg-white w-full dark:bg-darkBg fixed top-0 transition duration-300 ease-in ${
         headerVisible ? "translate-y-0" : "translate-y-[-100%]"
       }`}
     >
@@ -69,7 +72,7 @@ const Header = () => {
         src={CompanyLogo}
         alt="Company Logo"
         placeholder="blur"
-        className="w-10 h-10 cursor-pointer"
+        className="w-12 h-12 md:w-10 md:h-10 cursor-pointer"
         onClick={() => router.push("/")}
       />
 
@@ -78,7 +81,7 @@ const Header = () => {
           <NavLink href={"/"}>Home</NavLink>
         </li>
         <li>
-          <DropDown urlActive={menuActive} />
+          <NavMusicDropDown urlActive={menuActive} />
         </li>
         <li>
           <NavLink href="/about">Who we be</NavLink>
@@ -88,9 +91,9 @@ const Header = () => {
         </li>
       </ul>
 
-      <Sidebar />
+      <Sidebar isOpen={isSidebarOpen} toggleOpen={toggleSidebar} />
     </nav>
   );
 };
 
-export default Header;
+export default Navbar;

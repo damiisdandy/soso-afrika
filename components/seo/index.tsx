@@ -1,6 +1,7 @@
 import { NextSeo } from "next-seo";
 import type { NextSeoProps } from "next-seo";
 import Head from "next/head";
+import config from "@/config";
 
 interface SeoProps extends NextSeoProps {
   title: string;
@@ -24,7 +25,7 @@ const Seo = ({ title, description, image, ...rest }: SeoProps) => {
         }}
         twitter={{
           // TODO: add twitter handle
-          handle: "@handle",
+          handle: config.social.twitter.username,
           site: "@site",
           cardType: "summary_large_image",
         }}

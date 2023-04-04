@@ -1,93 +1,63 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
-import Hamburger from "@/assets/svg/hamburger.svg";
-import ToggleSwitch from "@/components/mode-switch";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { InstagramIcon, TwitterIcon, FaceBookIcon } from "@/assets";
-import NavDisclosure from "@/components/nav-disclosure";
-import { useDisclosure } from "@/hooks/useDisclosure";
+import { MdEmail } from "react-icons/md";
+import NavMusicDisclosure from "@/components/music-disclosure";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
+import { FC } from "react";
+import config from "@/config";
+import { NavLink } from "../navbar";
+import ModeSwitch from "@/components/mode-switch";
+import { BsInstagram, BsTwitter } from "react-icons/bs";
+import ExternalLink from "../external-link";
 
-export default function Sidebar() {
-  const { isOpen, onClose, toggleOpen } = useDisclosure(false);
-  const router = useRouter();
+type SidebarProps = {
+  isOpen: boolean;
+  toggleOpen: () => void;
+};
 
+const Sidebar: FC<SidebarProps> = ({ isOpen, toggleOpen }) => {
   return (
-    <>
-      <div className="mr-6 sm:hidden" onClick={toggleOpen}>
+    <div className="w-fit sm:hidden">
+      <div onClick={toggleOpen}>
         {isOpen ? (
-          <IoMdClose className="stroke-black dark:stroke-white text-3xl" />
+          <IoMdClose className="text-black dark:text-white text-3xl" />
         ) : (
-          <RxHamburgerMenu className="stroke-black dark:stroke-white text-2xl" />
+          <RxHamburgerMenu className="text-black dark:text-white text-2xl" />
         )}
       </div>
-      <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={onClose}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 overflow-y-auto bg-white dark:bg-darkBg ">
-            <div className="flex inset-0 min-h-full ">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel className="flex flex-col h-[100vh] w-[20rem] mx-auto self-center inset-0 max-w-full transform p-6  transition-all text-textColor dark:text-white">
-                  <div className="mt-[30vh]">
-                    <Dialog.Title
-                      as="h3"
-                      className="text-2xl mb-12 font-normal leading-6 text-gray-900"
-                    >
-                      <Link
-                        href={"/"}
-                        className={`${
-                          router.pathname === "/" ? "font-bold" : ""
-                        }`}
-                      >
-                        Home
-                      </Link>
-                    </Dialog.Title>
-                    <NavDisclosure />
-                    <Dialog.Title
-                      as="h3"
-                      className="text-2xl mb-12 font-normal leading-6 text-gray-900"
-                    >
-                      Who we be
-                    </Dialog.Title>
-                    <Dialog.Title
-                      as="h3"
-                      className="text-2xl mb-12 font-normal leading-6 text-gray-900"
-                    >
-                      <ToggleSwitch />
-                    </Dialog.Title>
-                  </div>
-                  <div className="flex flex-1 gap-6 items-end pb-8">
-                    <InstagramIcon className="fill-black dark:fill-white " />
-                    <FaceBookIcon className="fill-black dark:fill-white" />
-                    <TwitterIcon className="fill-black dark:fill-white" />
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
+      {/* Navbar has a height of 72px */}
+      <div
+        className={`${
+          isOpen ? "left-0" : "left-full"
+        } fixed w-screen block sm:hidden top-[72px] h-[calc(100vh-72px)] dark:bg-darkBg bg-white transition-all`}
+      >
+        <ul className="text-textColor pt-[40%] text-2xl dark:text-darkModeText w-screen h-[70vh] px-12 flex items-start gap-12 flex-col">
+          <li>
+            <NavLink href={"/"}>Home</NavLink>
+          </li>
+          <li>
+            <NavMusicDisclosure />
+          </li>
+          <li>
+            <NavLink href="/about">Who we be</NavLink>
+          </li>
+        </ul>
+        <div className="absolute bottom-10 px-10 flex justify-between w-full items-center">
+          <div className="flex gap-10 items-center dark:text-darkModeText text-black text-2xl">
+            <ExternalLink href={config.social.instagram}>
+              <BsInstagram />
+            </ExternalLink>
+            <ExternalLink href={config.social.twitter.url}>
+              <BsTwitter />
+            </ExternalLink>
+            <ExternalLink href={config.social.email}>
+              <MdEmail />
+            </ExternalLink>
           </div>
-        </Dialog>
-      </Transition>
-    </>
+          <ModeSwitch />
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default Sidebar;
