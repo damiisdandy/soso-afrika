@@ -31,6 +31,15 @@ export const NavLink = ({ href, children }: NavLinkProps) => {
 const Navbar = () => {
   const { isOpen: isSidebarOpen, toggleOpen: toggleSidebar } =
     useDisclosure(false);
+
+  //puts a restriction on the body when the modal is opened since we want nop activity going on the bg
+  useEffect(() => {
+    const htmlBody = document.querySelector("body")?.classList;
+    isSidebarOpen
+      ? htmlBody?.add("body__overflow")
+      : htmlBody?.remove("body__overflow");
+  }, [isSidebarOpen]);
+
   const [headerVisible, setHeaderVisible] = useState(true);
 
   useEffect(() => {

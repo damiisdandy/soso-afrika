@@ -58,10 +58,10 @@ export default function Home() {
                 </ExternalLink>
               </div>
               <section className="flex pb-12 flex-col md:flex-row md:items-end gap-4 mt-2 sm:mt-[5rem] relative ml-4 md:ml-12 scrollbar-none">
-                <h2 className="font-bold mt-14 md:mt-auto text-xl md:text-2xl md:rotate-[270deg] origin-left w-[200px]">
+                <h2 className="font-bold text-xl md:text-2xl md:rotate-[270deg] origin-left absolute -top-10 md:top-[14.5rem] w-[200px]">
                   Top Stories
                 </h2>
-                <div className="flex gap-5 xl:gap-6 overflow-x-scroll scrollbar-none md:-ml-28">
+                <div className="flex gap-5 xl:gap-6 overflow-x-scroll scrollbar-none md:ml-12">
                   {heroCards.map((heroCard, id) => (
                     <HeroCards
                       key={id}
