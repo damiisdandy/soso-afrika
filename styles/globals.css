@@ -7,3 +7,11 @@ body {
 .dark {
   background: #181818;
 }
+
+.hero-card h2 {
+opacity: 0%
+}
+
+.hero-card:hover h2 {
+opacity: 100%;
+}

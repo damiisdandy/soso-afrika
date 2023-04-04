@@ -24,7 +24,7 @@ export default function Home() {
             />
           </div>
           <div className="relative z-20 flex flex-col md:flex-row h-screen">
-            <aside className="md:w-[4rem] flex md:flex-col justify-center gap-10 mt-[7rem] md:mt-0 md:gap-8 md:justify-end mx-10 mb-12 text-xl md:text-2xl">
+            <aside className="md:w-[4rem] hidden md:flex md:flex-col items-center justify-center gap-10 mt-[7rem] md:mt-0 md:gap-8 md:justify-end mx-10 mb-12 text-xl md:text-2xl">
               <ExternalLink href={config.social.instagram}>
                 <BsInstagram />
               </ExternalLink>
@@ -46,15 +46,26 @@ export default function Home() {
                 her people, her food, her fashion, her entrepreneurs, her
                 possibilities and her passions!
               </p>
-              <section className="flex pb-12 flex-col md:flex-row gap-2 mt-[4rem] sm:mt-[5rem] relative ml-4 md:ml-12 scrollbar-none">
-                <h2 className="font-bold text-2xl md:rotate-[270deg] h-fit w-[12rem] md:absolute top-[11.3rem] xl:top-[8.7rem] left-[-6rem] mb-4 md:mb-0">
+              <div className="flex md:hidden justify-center items-center my-6 text-2xl gap-6">
+                <ExternalLink href={config.social.instagram}>
+                  <BsInstagram />
+                </ExternalLink>
+                <ExternalLink href={config.social.twitter.url}>
+                  <BsTwitter />
+                </ExternalLink>
+                <ExternalLink href={config.social.email}>
+                  <MdEmail />
+                </ExternalLink>
+              </div>
+              <section className="flex pb-12 flex-col md:flex-row md:items-end gap-4 mt-2 sm:mt-[5rem] relative ml-4 md:ml-12 scrollbar-none">
+                <h2 className="font-bold mt-14 md:mt-auto text-xl md:text-2xl md:rotate-[270deg] origin-left w-[200px]">
                   Top Stories
                 </h2>
-                <div className="flex gap-4 xl:gap-6 md:ml-12 overflow-x-scroll scrollbar-none">
+                <div className="flex gap-5 xl:gap-6 overflow-x-scroll scrollbar-none md:-ml-28">
                   {heroCards.map((heroCard, id) => (
                     <HeroCards
                       key={id}
-                      title={heroCard?.title ?? ""}
+                      title={heroCard.title}
                       img={heroCard.img}
                     />
                   ))}

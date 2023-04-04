@@ -1,19 +1,22 @@
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 type HeroCardProps = {
-  title?: string;
+  title: string;
   img: StaticImageData;
 };
 const HeroCards: React.FC<HeroCardProps> = ({ img, title }) => {
   return (
-    <div className="relative h-fit">
+    <Link href="" className="block relative h-fit hero-card flex-shrink-0">
       <Image
         src={img}
         alt={`${title} image`}
-        className="min-w-[250px] min-h-[250px]  sm:min-w-[300px] sm:h-[300px] xl:h-[250px] h-[250px] filter brightness-75"
+        className="w-[250px] h-[250px] filter brightness-100 hover:brightness-50"
       />
-      <h2 className="p-3 absolute bottom-20 left-6 font-bold">{title}</h2>
-    </div>
+      <h2 className="w-3/4 left-1/2 top-1/2 transform -translate-x-1/2 font-semibold  line-clamp-2 absolute overflow-hidden text-sm bottom-20 transition-all">
+        {title}
+      </h2>
+    </Link>
   );
 };
 

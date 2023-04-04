@@ -49,8 +49,11 @@ export const reviewEachPageDetails = {
 };
 
 export const heroCards = [
+  { title: "Kabza De Small Long ass text goes here also", img: HeroCard1 },
   { title: "ALL HAIL THE KING OF AMAPIANO: Kabza De Small", img: HeroCard1 },
-  { img: HeroCard2 },
-  { img: HeroCard4 },
-  { img: HeroCard3 }
+  { title: "ALL HAIL THE KING OF AMAPIANO: Kabza De Small", img: HeroCard1 },
+  { title: "ALL HAIL THE KING OF AMAPIANO: Kabza De Small", img: HeroCard1 },
+  { title: "ALL HAIL THE KING OF AMAPIANO: Kabza De Small", img: HeroCard1 },
+  { title: "ALL HAIL THE KING OF AMAPIANO: Kabza De Small", img: HeroCard1 },
+
 ];
