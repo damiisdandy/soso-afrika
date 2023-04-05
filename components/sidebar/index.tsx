@@ -35,13 +35,13 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, toggleOpen }) => {
             <NavLink href={"/"}>Home</NavLink>
           </li>
           <li>
-            <NavMusicDisclosure />
+            <NavMusicDisclosure toggleOpen={toggleOpen} />
           </li>
           <li>
             <NavLink href="/about">Who we be</NavLink>
           </li>
         </ul>
-        <div className="absolute bottom-10 px-10 flex justify-between w-full items-center">
+        <div className=" sm:absolute bottom-10 px-10 flex justify-between w-full items-center">
           <div className="flex gap-10 items-center dark:text-darkModeText text-black text-2xl">
             <ExternalLink href={config.social.instagram}>
               <BsInstagram />

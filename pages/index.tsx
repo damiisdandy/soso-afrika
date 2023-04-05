@@ -3,7 +3,7 @@ import { heroCards } from "@/utils/mockdata";
 import config from "@/config";
 import Seo from "@/components/seo";
 import Image from "next/image";
-import heroImage from "@/assets/img/hero.png";
+import heroImage from "@/assets/img/hero1.jpeg";
 import ExternalLink from "@/components/external-link";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
@@ -12,9 +12,9 @@ export default function Home() {
   return (
     <>
       <Seo title="Home" description="We Market Africa" />
-      <main className="text-white ">
+      <main className="text-white mt-[64px]">
         <section>
-          <div className="fixed overflow-hidden bg-[rgba(100,100,100,0.3)] backdrop-blur-[5px] dark:bg-[rgba(0,0,0,0.3)] -z-10 h-screen w-screen"></div>
+          <div className="fixed bg-[rgba(100,100,100,0.3)] backdrop-blur-[5px] dark:bg-[rgba(0,0,0,0.3)] -z-10 h-screen w-screen"></div>
           <div className="fixed overflow-hidden -z-20 h-screen w-screen">
             <Image
               src={heroImage}
@@ -23,7 +23,7 @@ export default function Home() {
               placeholder="blur"
             />
           </div>
-          <div className="relative z-20 flex flex-col md:flex-row h-screen">
+          <div className="relative z-20 flex flex-col md:flex-row ">
             <aside className="md:w-[4rem] hidden md:flex md:flex-col items-center justify-center gap-10 mt-[7rem] md:mt-0 md:gap-8 md:justify-end mx-10 mb-12 text-xl md:text-2xl">
               <ExternalLink href={config.social.instagram}>
                 <BsInstagram />
@@ -35,7 +35,7 @@ export default function Home() {
                 <MdEmail />
               </ExternalLink>
             </aside>
-            <div className="md:border-l border-[#888] dark:border-[#444] mt-4 h-full md:overflow-x-hidden flex flex-col justify-end">
+            <div className="md:border-l border-[#888] dark:border-[#444] mt-12 lg:mt-16 xl:mt-28 h-full md:overflow-x-hidden flex flex-col justify-end">
               <h1 className="text-header font-extrabold text-4xl md:text-6xl md:mt-4rem px-[1rem] sm:px-[3rem] text-center md:text-left">
                 WE SOKO AFRIKA
               </h1>
