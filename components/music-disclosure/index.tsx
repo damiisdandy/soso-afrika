@@ -8,14 +8,6 @@ import { MutableRefObject } from "react";
 type NavDisclosureProps = {
   toggleOpen: () => void;
 };
-interface closeDisclosureProps {
-  closeDisclosure: (
-    focusableElement?:
-      | HTMLElement
-      | MutableRefObject<HTMLElement | null>
-      | undefined
-  ) => void;
-}
 
 export default function NavDisclosure({ toggleOpen }: NavDisclosureProps) {
   const { pathname } = useRouter();
