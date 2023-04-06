@@ -13,7 +13,10 @@ const ReviewsCard = ({ img, title, desc, creator }: ReviewsCardProps) => {
   const router = useRouter();
 
   return (
-    <div className="px-6 w-[45rem]  md:w-[23rem] lg:w-[30rem] xl:w-[39rem]">
+    <div
+      onClick={() => router.push("/reviews/1")}
+      className="cursor-pointer px-6 w-[45rem]  md:w-[23rem] lg:w-[30rem] xl:w-[39rem]"
+    >
       <Image src={img} alt={title + "info"} className="w-[35rem] mx-auto" />
       <h3 className="font-extrabold mt-4 ">{title}</h3>
       <h4 className="font-bold mt-3">-{creator}</h4>

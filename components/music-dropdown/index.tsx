@@ -22,8 +22,8 @@ const MenuItem = ({ active, href, children, onClick }: MenuItemProps) => {
       onClick={onClick}
       href={href}
       className={`${
-        active ? "bg-switchLight dark:bg-switch" : ""
-      }  px-3 py-2 text-sm w-full text-left block hover:bg-switchLight dark:hover:bg-switch`}
+        active ? "bg-header/5 dark:bg-header" : ""
+      }  px-3 py-2 text-sm w-full text-left block hover:bg-header/5 dark:hover:bg-header`}
     >
       {children}
     </Link>
