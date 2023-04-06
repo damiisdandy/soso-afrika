@@ -2,17 +2,36 @@ import { Disclosure } from "@headlessui/react";
 import { ArrowDown } from "@/assets";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { menuItemsContent } from "@/config";
+import { MutableRefObject } from "react";
 
-export default function NavDisclosure() {
+type NavDisclosureProps = {
+  toggleOpen: () => void;
+};
+
+export default function NavDisclosure({ toggleOpen }: NavDisclosureProps) {
   const { pathname } = useRouter();
   const isActive = (isOpen: boolean) => {
     return isOpen || pathname.toLowerCase().includes("music");
   };
+
+  const handleCloseDisclosure = (
+    closeDisclosure: (
+      focusableElement?:
+        | HTMLElement
+        | MutableRefObject<HTMLElement | null>
+        | undefined
+    ) => void
+  ) => {
+    closeDisclosure();
+    toggleOpen();
+  };
+
   return (
     <div className="w-full">
       <div className="mx-auto w-full max-w-md rounded-2xl ">
         <Disclosure>
-          {({ open }) => (
+          {({ open, close }) => (
             <>
               <Disclosure.Button
                 className={`flex gap-3 font-normal leading-6 text-textColor text-2xl dark:text-darkModeText`}
@@ -25,18 +44,16 @@ export default function NavDisclosure() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 mt-6 text-xl text-textColor dark:text-darkModeText">
-                <Link href="/reviews" className="block mb-4">
-                  Reviews
-                </Link>
-                <Link href="/features" className="block mb-4">
-                  Features
-                </Link>
-                <Link href="/videos" className="block mb-4">
-                  Videos
-                </Link>
-                <Link href="/review#new-stuff" className="block mb-4">
-                  PSST! New Stuff
-                </Link>
+                {menuItemsContent.map((itemContent) => (
+                  <Link
+                    key={itemContent.menuContent}
+                    href={itemContent.href}
+                    className="block mb-4"
+                    onClick={() => handleCloseDisclosure(close)}
+                  >
+                    {itemContent.menuContent}
+                  </Link>
+                ))}
               </Disclosure.Panel>
             </>
           )}

@@ -9,9 +9,12 @@ body {
 }
 
 .hero-card h2 {
-opacity: 0%
+  opacity: 0%;
 }
 
 .hero-card:hover h2 {
-opacity: 100%;
+  opacity: 100%;
+}
+.body__overflow {
+  overflow: hidden;
 }

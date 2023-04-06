@@ -3,6 +3,7 @@ import { Fragment, MouseEvent, ReactNode } from "react";
 import { useRouter } from "next/router";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Link from "next/link";
+import { menuItemsContent } from "@/config";
 
 type DropDownProps = {
   urlActive: boolean;
@@ -12,11 +13,13 @@ type MenuItemProps = {
   active: boolean;
   href: string;
   children: ReactNode;
+  onClick: () => void;
 };
 
-const MenuItem = ({ active, href, children }: MenuItemProps) => {
+const MenuItem = ({ active, href, children, onClick }: MenuItemProps) => {
   return (
     <Link
+      onClick={onClick}
       href={href}
       className={`${
         active ? "bg-switchLight dark:bg-switch" : ""
@@ -28,13 +31,6 @@ const MenuItem = ({ active, href, children }: MenuItemProps) => {
 };
 
 export default function DropDown({ urlActive }: DropDownProps) {
-  const router = useRouter();
-
-  const handleReviewsNavigation = (e: MouseEvent) => {
-    e.preventDefault();
-    router.push("/reviews");
-  };
-
   return (
     <div className="">
       <Menu as="div" className="relative inline-block text-left">
@@ -67,34 +63,19 @@ export default function DropDown({ urlActive }: DropDownProps) {
         >
           <Menu.Items className="absolute right-0 mt-2 w-[9rem] origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-textColor shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className=" py-1 ">
-              <Menu.Item>
-                {({ active }) => (
-                  <MenuItem active={active} href="/reviews">
-                    Reviews
-                  </MenuItem>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <MenuItem active={active} href="/features">
-                    Features
-                  </MenuItem>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <MenuItem active={active} href="/videos">
-                    Videos
-                  </MenuItem>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <MenuItem active={active} href="/reviews#new-stuff">
-                    PSST! New stuff
-                  </MenuItem>
-                )}
-              </Menu.Item>
+              {menuItemsContent.map((linkContent) => (
+                <Menu.Item key={linkContent.menuContent}>
+                  {({ active, close }) => (
+                    <MenuItem
+                      active={active}
+                      href={linkContent.href}
+                      onClick={close}
+                    >
+                      {linkContent.menuContent}
+                    </MenuItem>
+                  )}
+                </Menu.Item>
+              ))}
             </div>
           </Menu.Items>
         </Transition>
