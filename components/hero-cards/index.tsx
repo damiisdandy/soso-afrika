@@ -7,7 +7,10 @@ type HeroCardProps = {
 };
 const HeroCards: React.FC<HeroCardProps> = ({ img, title }) => {
   return (
-    <Link href="" className="block relative h-fit hero-card flex-shrink-0">
+    <Link
+      href="/reviews/1"
+      className="block relative h-fit hero-card flex-shrink-0"
+    >
       <Image
         src={img}
         alt={`${title} image`}

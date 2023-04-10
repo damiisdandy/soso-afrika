@@ -15,7 +15,7 @@ const ReviewsPage = () => {
           <h2 className="font-bold mx-4 sm:mx-10 text-2xl border-b pb-8 border-reviewsBorder dark:border-textColor ">
             Reviews
           </h2>
-          <section className="mt-12 flex lg:gap-8 xl:gap-0 justify-center flex-wrap gap-y-16 xl:gap-y-14">
+          <section className=" mt-12 flex lg:gap-8 xl:gap-0 justify-center flex-wrap gap-y-16 xl:gap-y-14">
             {reviewCardsContent?.map((cardContent, idx) => (
               <ReviewsCard
                 key={idx}
