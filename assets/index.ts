@@ -20,3 +20,6 @@ export {
   ArrowDown,
   InstagramIcon
 };
+import Custom404Img from "./svg/404.svg";
+
+export { Custom404Img };
