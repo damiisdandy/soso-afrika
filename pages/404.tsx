@@ -1,4 +1,3 @@
-import { Custom404Img } from "@/assets";
 import React from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 
