@@ -1,11 +1,12 @@
 import React from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
+import custom404Lottie from "../config/custom404lottie.json";
 
 export default function Custom404() {
   return (
     <main className="grid place-items-center h-[100vh] overflow-hidden">
       <Player
-        src="https://assets10.lottiefiles.com/private_files/lf30_conoeouc.json"
+        src={custom404Lottie}
         loop
         autoplay
         className="max-w-[40rem] max-h-[35rem]"
