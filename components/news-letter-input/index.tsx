@@ -20,7 +20,7 @@ const NewsLetterInput = () => {
         value={email}
         onChange={handleEmailOnChange}
         name="soso-email"
-        className="bg-formBg w-[25rem] p-3 sm:p-4 rounded-lg"
+        className="bg-formBg w-[25rem] p-3 sm:p-4 rounded-lg dark:text-black border-main border-none outline-none"
         placeholder="Email address"
       />
       <button
