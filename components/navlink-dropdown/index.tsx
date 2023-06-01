@@ -1,12 +1,17 @@
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, MouseEvent, ReactNode } from "react";
-import { useRouter } from "next/router";
+import { Fragment, ReactNode } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Link from "next/link";
-import { menuItemsContent } from "@/config";
+
+type DropDownLink = {
+  href: string;
+  name: string;
+};
 
 type DropDownProps = {
   urlActive: boolean;
+  name: string;
+  items: DropDownLink[];
 };
 
 type MenuItemProps = {
@@ -30,7 +35,7 @@ const MenuItem = ({ active, href, children, onClick }: MenuItemProps) => {
   );
 };
 
-export default function DropDown({ urlActive }: DropDownProps) {
+export default function DropDown({ urlActive, name, items }: DropDownProps) {
   return (
     <div className="">
       <Menu as="div" className="relative inline-block text-left">
@@ -42,7 +47,7 @@ export default function DropDown({ urlActive }: DropDownProps) {
           >
             {({ open }) => (
               <div className="flex items-center gap-2">
-                <p>Music</p>
+                <p>{name}</p>
                 {open ? (
                   <IoIosArrowUp className="dark:fill-white" />
                 ) : (
@@ -63,15 +68,15 @@ export default function DropDown({ urlActive }: DropDownProps) {
         >
           <Menu.Items className="absolute right-0 mt-2 w-[9rem] origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-textColor shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className=" py-1 ">
-              {menuItemsContent.map((linkContent) => (
-                <Menu.Item key={linkContent.menuContent}>
+              {items.map((linkContent) => (
+                <Menu.Item key={linkContent.name}>
                   {({ active, close }) => (
                     <MenuItem
                       active={active}
                       href={linkContent.href}
                       onClick={close}
                     >
-                      {linkContent.menuContent}
+                      {linkContent.name}
                     </MenuItem>
                   )}
                 </Menu.Item>

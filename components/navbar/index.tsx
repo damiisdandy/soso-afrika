@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import ModeSwitch from "@/components/mode-switch";
-import NavMusicDropDown from "@/components/music-dropdown";
+import NavLinkDropDown from "@/components/navlink-dropdown";
 import CompanyLogo from "@/assets/img/companylogo.png";
 import Sidebar from "@/components/sidebar";
 import { useDisclosure } from "@/hooks/useDisclosure";
@@ -90,10 +90,43 @@ const Navbar = () => {
           <NavLink href={"/"}>Home</NavLink>
         </li>
         <li>
-          <NavMusicDropDown urlActive={menuActive} />
+          <NavLinkDropDown
+            name="Features & Reviews"
+            items={[
+              {
+                name: "Feed your eyes",
+                href: "/reviews#feed-your-eyes",
+              },
+              {
+                name: "Quick questions",
+                href: "/reviews#quick-questions",
+              },
+              {
+                name: "Things we see",
+                href: "/reviews#things-we-see",
+              },
+            ]}
+            urlActive={menuActive}
+          />
         </li>
         <li>
-          <NavLink href="/about">Who we be</NavLink>
+          <NavLinkDropDown
+            name="Psst!"
+            items={[
+              {
+                name: "Cool Stuff",
+                href: "/cool-stuff",
+              },
+              {
+                name: "New Stuff",
+                href: "/new-stuff",
+              },
+            ]}
+            urlActive={menuActive}
+          />
+        </li>
+        <li>
+          <NavLink href="/about">Soko</NavLink>
         </li>
         <li>
           <ModeSwitch />
