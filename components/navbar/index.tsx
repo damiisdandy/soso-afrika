@@ -95,15 +95,15 @@ const Navbar = () => {
             items={[
               {
                 name: "Feed your eyes",
-                href: "/reviews#feed-your-eyes",
+                href: "/feed-your-eyes",
               },
               {
                 name: "Quick questions",
-                href: "/reviews#quick-questions",
+                href: "/quick-questions",
               },
               {
                 name: "Things we see",
-                href: "/reviews#things-we-see",
+                href: "/things-we-see",
               },
             ]}
             urlActive={menuActive}

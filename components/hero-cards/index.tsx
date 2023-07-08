@@ -1,22 +1,28 @@
-import Image, { StaticImageData } from "next/image";
+import { defaultBlurImage } from "@/config";
+import Image from "next/image";
 import Link from "next/link";
 
 type HeroCardProps = {
+  id: number;
   title: string;
-  img: StaticImageData;
+  img: string;
 };
-const HeroCards: React.FC<HeroCardProps> = ({ img, title }) => {
+const HeroCards: React.FC<HeroCardProps> = ({ img, title, id }) => {
   return (
     <Link
-      href="/reviews/1"
-      className="block relative h-fit hero-card flex-shrink-0"
+      href={`/`}
+      className="block group relative h-fit hero-card flex-shrink-0 rounded-md overflow-hidden shadow-lg"
     >
       <Image
-        src={img}
-        alt={`${title} image`}
-        className="w-[250px] h-[250px] filter brightness-100 hover:brightness-50"
+        src={img ? img : defaultBlurImage}
+        alt={title}
+        width={250}
+        height={250}
+        placeholder="blur"
+        blurDataURL={defaultBlurImage}
+        className="w-[250px] h-[250px] filter brightness-100 group-hover:brightness-50 object-cover transition-all"
       />
-      <h2 className="w-3/4 left-1/2 top-1/2 transform -translate-x-1/2 font-semibold  line-clamp-2 absolute overflow-hidden text-sm bottom-20 transition-all">
+      <h2 className="w-full p-3 bg-white dark:bg-darkBg dark:text-white text-black absolute bottom-0 z-20 text-sm">
         {title}
       </h2>
     </Link>

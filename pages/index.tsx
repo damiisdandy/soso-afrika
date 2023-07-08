@@ -7,8 +7,14 @@ import heroImage from "@/assets/img/hero1.jpeg";
 import ExternalLink from "@/components/external-link";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
+import { GetServerSideProps } from "next";
+import { getPosts } from "@/utils/api";
 
-export default function Home() {
+type Props = {
+  posts: Post[];
+};
+
+export default function Home({ posts }: Props) {
   return (
     <>
       <Seo title="Home" description="We Market Africa" />
@@ -60,15 +66,11 @@ export default function Home() {
                 </div>
                 <section className="flex fle-1 pb-12 flex-col md:flex-row md:items-end gap-4 mt-2 sm:mt-[5rem] relative ml-4 md:ml-12 scrollbar-none">
                   <h2 className="font-bold text-xl md:text-2xl md:rotate-[270deg] origin-left mt-20 sm:mt-0 sm:absolute -top-10 md:top-[14.5rem] w-[200px]">
-                    Top Stories
+                    Recent Stories
                   </h2>
                   <div className="flex gap-5 xl:gap-6 overflow-x-scroll scrollbar-none md:ml-12">
-                    {heroCards.map((heroCard, id) => (
-                      <HeroCards
-                        key={id}
-                        title={heroCard.title}
-                        img={heroCard.img}
-                      />
+                    {posts.map(({ id, image, title }) => (
+                      <HeroCards key={id} id={id} title={title} img={image} />
                     ))}
                   </div>
                 </section>
@@ -80,3 +82,23 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const { data, status } = await getPosts({
+    per_page: 6,
+    order: "desc",
+    orderby: "date",
+  });
+  if (status) {
+    return {
+      props: {
+        posts: data,
+      },
+    };
+  }
+  return {
+    props: {
+      posts: [],
+    },
+  };
+};
