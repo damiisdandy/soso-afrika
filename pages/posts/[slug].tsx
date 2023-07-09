@@ -34,7 +34,6 @@ const ReviewsDetailsPage = ({ post }: Prop) => {
             className=" w-[35rem] rounded-lg sm:w-[50rem] xl:w-full h-[15rem] sm:h-[25rem] md:h-[35rem] object-cover"
           />
         </section>
-        <hr className="my-4" />
         <div
           className="markdown"
           dangerouslySetInnerHTML={{
