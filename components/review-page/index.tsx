@@ -29,7 +29,7 @@ const ReviewsPage = ({ title, description, posts }: Props) => {
             {title}
           </h2>
           {posts.length ? (
-            <section className="mt-12 grid grid-cols-2 xl:gap-y-14 mx-4 sm:mx-10 gap-20">
+            <section className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:gap-y-14 mx-4 sm:mx-10 gap-20">
               {posts
                 .slice(0, CONTENT_PER_PAGE * page)
                 .map(({ image, description, title, date, id, slug }) => (

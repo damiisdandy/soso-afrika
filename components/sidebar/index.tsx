@@ -1,5 +1,5 @@
 import { MdEmail } from "react-icons/md";
-import NavMusicDisclosure from "@/components/music-disclosure";
+import NavDisclosure from "@/components/music-disclosure";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import { FC } from "react";
@@ -35,10 +35,43 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, toggleOpen }) => {
             <NavLink href={"/"}>Home</NavLink>
           </li>
           <li>
-            <NavMusicDisclosure toggleOpen={toggleOpen} />
+            <NavDisclosure
+              toggleOpen={toggleOpen}
+              header="Features & Reviews"
+              menuContent={[
+                {
+                  name: "Feed your eyes",
+                  href: "/feed-your-eyes",
+                },
+                {
+                  name: "Quick questions",
+                  href: "/quick-questions",
+                },
+                {
+                  name: "Things we see",
+                  href: "/things-we-see",
+                },
+              ]}
+            />
           </li>
           <li>
-            <NavLink href="/about">Who we be</NavLink>
+            <NavDisclosure
+              header="Psst!"
+              toggleOpen={toggleOpen}
+              menuContent={[
+                {
+                  name: "Cool Stuff",
+                  href: "/cool-stuff",
+                },
+                {
+                  name: "New Stuff",
+                  href: "/new-stuff",
+                },
+              ]}
+            />
+          </li>
+          <li>
+            <NavLink href={"/about"}>Home</NavLink>
           </li>
         </ul>
         <div className=" sm:absolute bottom-10 px-10 flex justify-between w-full items-center">

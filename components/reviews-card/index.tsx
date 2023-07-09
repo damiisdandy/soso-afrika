@@ -43,7 +43,7 @@ const ReviewsCard = ({ img, title, desc, slug, date }: ReviewsCardProps) => {
         }}
         className="italic font-light line-clamp-2"
       ></p>
-      <div className="flex items-center justify-between mt-4">
+      <div className="flex items-center justify-between mt-4 px-2 md:px-0">
         <span className="flex items-center gap-3 font-bold">{date}</span>
         <h5
           className="flex items-center gap-3 font-semibold text-header cursor-pointer text-md"
