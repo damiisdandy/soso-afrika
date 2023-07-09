@@ -13,6 +13,7 @@ const MusicPlaylist = ({ img, title }: MusicPlaylistProps) => {
         <div className="flex flex-col sm:flex-row gap-5 xl:gap-16">
           <Image
             src={img}
+            placeholder="blur"
             alt={`${title} illustrator`}
             className="w-[30rem] self-center sm:w-[10rem] sm:h-[7rem] lg:h-[15rem] lg:w-[20rem]"
           />

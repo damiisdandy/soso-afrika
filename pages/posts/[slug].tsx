@@ -16,7 +16,7 @@ const ReviewsDetailsPage = ({ post }: Prop) => {
         title={post.title}
         description={post.description}
         image={{
-          url: post.image,
+          url: imageResizer(post.image, 700, 700),
         }}
       />
       <main className="max-w-[1320px] mx-auto px-4 text-textColor dark:bg-main dark:text-white mb-8 mt-[7rem]">

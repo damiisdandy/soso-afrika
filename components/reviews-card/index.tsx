@@ -12,11 +12,14 @@ type ReviewsCardProps = {
   date: string;
 };
 
-const ReviewsCard = ({ img, title, desc, date }: ReviewsCardProps) => {
+const ReviewsCard = ({ img, title, desc, slug, date }: ReviewsCardProps) => {
   const router = useRouter();
 
   return (
-    <div onClick={() => router.push("/reviews/1")} className="cursor-pointer">
+    <div
+      onClick={() => router.push(`/posts/${slug}`)}
+      className="cursor-pointer"
+    >
       <div className="overflow-hidden group rounded-lg">
         <Image
           alt={title}
