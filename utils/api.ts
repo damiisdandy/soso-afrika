@@ -1,4 +1,4 @@
-import defaultConfig from "@/config";
+import defaultConfig, { defaultBlurImage } from "@/config";
 import axios from "axios";
 import dayjs from "dayjs";
 import { convert } from 'html-to-text';
@@ -30,7 +30,7 @@ const defaultParams: getPostParams = {
   order: 'desc',
 }
 
-const postSanitizer = (post: any): Post => {
+const postSanitizer = (post: any): PostWithRelated => {
   return {
     id: post.id,
     date: dayjs(post.date).format('MMMM DD, YYYY'),
@@ -39,14 +39,20 @@ const postSanitizer = (post: any): Post => {
     slug: post.slug,
     title: convert(post.title.rendered),
     description: convert(post.excerpt.rendered),
-    image: post.jetpack_featured_media_url,
+    image: post.jetpack_featured_media_url.split('?')[0],
     author: post.author,
+    related: post["jetpack-related-posts"].map((item: any) => ({
+      id: item.id,
+      slug: item.url.slice(0, -1).split('/').pop(),
+      image: item.img.src.split('?')[0],
+      title: item.title,
+    })),
   }
 }
 
 
 
-export const getPosts = async (params: getPostParams = defaultParams): Promise<ApiResponse<Post[]>> => {
+export const getPosts = async (params: getPostParams = defaultParams): Promise<ApiResponse<PostWithRelated[]>> => {
   const excludedKeys = ['categories', 'tags'];
 
   const queryObject = {
@@ -73,4 +79,25 @@ export const getPosts = async (params: getPostParams = defaultParams): Promise<A
       error: err,
     }
   }
+}
+
+export const getPostBySlug = async (slug: string): Promise<ApiResponse<PostWithRelated>> => {
+  try {
+    const res = await axiosInstance.get<Post[]>(`/posts?slug=${slug}`);
+    return {
+      data: postSanitizer(res.data[0]),
+      status: true,
+    }
+  } catch (err) {
+    return {
+      data: null,
+      status: false,
+      error: err,
+    }
+  }
+}
+
+export const imageResizer = (url: string, width: number, height: number): string => {
+  if (url.length > 0) return `${url}?fit=${width}%2C${height}`;
+  return defaultBlurImage;
 }

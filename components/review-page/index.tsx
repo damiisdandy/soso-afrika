@@ -28,20 +28,29 @@ const ReviewsPage = ({ title, description, posts }: Props) => {
           <h2 className="font-bold mx-4 sm:mx-10 text-2xl md:text-3xl uppercase border-b pb-4 md:pb-8 border-reviewsBorder dark:border-textColor ">
             {title}
           </h2>
-          <section className="mt-12 flex lg:gap-8 xl:gap-0 items-start justify-items-start flex-wrap gap-y-16 xl:gap-y-14">
-            {posts
-              .slice(0, CONTENT_PER_PAGE * page)
-              .map(({ image, description, title, date, id, slug }) => (
-                <ReviewsCard
-                  key={id}
-                  img={image}
-                  desc={description}
-                  title={title}
-                  date={date}
-                  slug={slug}
-                />
-              ))}
-          </section>
+          {posts.length ? (
+            <section className="mt-12 grid grid-cols-2 xl:gap-y-14 mx-4 sm:mx-10 gap-20">
+              {posts
+                .slice(0, CONTENT_PER_PAGE * page)
+                .map(({ image, description, title, date, id, slug }) => (
+                  <ReviewsCard
+                    key={id}
+                    img={image}
+                    desc={description}
+                    title={title}
+                    date={date}
+                    slug={slug}
+                  />
+                ))}
+            </section>
+          ) : (
+            <div className="mx-4 sm:mx-10 mt-6">
+              <h1 className="text-xl italic">
+                Looks like there aren&apos;t any posts under this category, we
+                are still cooking something so come back later
+              </h1>
+            </div>
+          )}
           {page < totalPages && (
             <section
               onClick={handleViewMore}

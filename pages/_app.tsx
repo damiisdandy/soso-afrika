@@ -1,5 +1,6 @@
 import Header from "@/components/navbar";
 import "@/styles/globals.css";
+import "@/styles/markdown.scss";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 

@@ -1,0 +1,44 @@
+.markdown {
+  p {
+    margin: 0 0 1.5em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: center;
+  }
+
+  .has-text-align-center {
+    text-align: center;
+  }
+
+  hr {
+    height: 2px;
+    width: 50%;
+    margin: 1.5rem auto;
+    background-color: #888;
+    border: none;
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-left: 2em;
+  }
+
+  figure {
+    margin: 40px auto;
+  }
+  strong {
+    font-size: 20px;
+  }
+
+  iframe,
+  img {
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+}

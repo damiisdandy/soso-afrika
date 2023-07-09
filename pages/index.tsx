@@ -1,5 +1,4 @@
 import HeroCards from "@/components/hero-cards";
-import { heroCards } from "@/utils/mockdata";
 import config from "@/config";
 import Seo from "@/components/seo";
 import Image from "next/image";
@@ -69,8 +68,13 @@ export default function Home({ posts }: Props) {
                     Recent Stories
                   </h2>
                   <div className="flex gap-5 xl:gap-6 overflow-x-scroll scrollbar-none md:ml-12">
-                    {posts.map(({ id, image, title }) => (
-                      <HeroCards key={id} id={id} title={title} img={image} />
+                    {posts.map(({ id, image, title, slug }) => (
+                      <HeroCards
+                        key={id}
+                        slug={slug}
+                        title={title}
+                        img={image}
+                      />
                     ))}
                   </div>
                 </section>
