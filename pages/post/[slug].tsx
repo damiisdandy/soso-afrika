@@ -5,7 +5,6 @@ import NewsLetterInput from "@/components/news-letter-input";
 import Seo from "@/components/seo";
 import { reviewEachPageDetails, heroCards } from "@/utils/mockdata";
 import { GetServerSideProps } from "next";
-import Head from "next/head";
 import Image, { StaticImageData } from "next/image";
 
 type ReviewsDetailsPageProps = {
