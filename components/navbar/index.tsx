@@ -115,7 +115,7 @@ const Navbar = () => {
           />
           <div className="items-center hidden xl:flex justify-between bg-[#eee] dark:bg-[#141414] rounded-md px-3 py-1.5">
             <input
-              className=" xl:w-[500px] h-full  border-none outline-none  bg-transparent  placeholder:text-[#aaa]"
+              className=" xl:w-[500px] h-6  border-none outline-none  bg-transparent  placeholder:text-[#aaa]"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search for posts..."
@@ -187,12 +187,12 @@ const Navbar = () => {
       </nav>
       <div
         className={`absolute z-40 transition-all block md:hidden ${
-          isSearchOpen ? "top-[calc(100%+theme(space.2))]" : "-top-20"
+          isSearchOpen ? "top-2" : "-top-20"
         } left-0 w-screen`}
       >
         <div className="items-center flex xl:hidden justify-between bg-[#eee] dark:bg-[#141414] px-3 py-1.5">
           <input
-            className="w-full outline-none border-none block md:none bg-[#eee] dark:bg-[#141414] placeholder:text-[#aaa]"
+            className="w-full h-9 outline-none border-none block md:none bg-[#eee] dark:bg-[#141414] placeholder:text-[#aaa]"
             value={query}
             placeholder="Search for posts..."
             onChange={(e) => setQuery(e.target.value)}

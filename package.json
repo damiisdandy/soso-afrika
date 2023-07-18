@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.13",
     "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@types/html-to-text": "^9.0.1",
     "@types/node": "18.15.5",
     "@types/react": "18.0.28",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
+    "@types/mailchimp__mailchimp_marketing": "^3.0.10",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
     "tailwind-scrollbar": "^3.0.0",
