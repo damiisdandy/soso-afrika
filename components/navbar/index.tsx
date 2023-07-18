@@ -95,6 +95,8 @@ const Navbar = () => {
     };
   }, [headerVisible]);
 
+  console.log({ isSearchOpen });
+
   const menuActive = router.pathname === "/reviews";
   return (
     <nav
@@ -102,6 +104,12 @@ const Navbar = () => {
         headerVisible ? "translate-y-0" : "translate-y-[-100%]"
       }`}
     >
+      {isSearchResultOpen && (
+        <div
+          className="h-screen w-screen absolute top-0 left-0 z-30"
+          onClick={closeSearchResult}
+        ></div>
+      )}
       <div className="flex items-center gap-6">
         <Image
           src={CompanyLogo}
@@ -118,7 +126,6 @@ const Navbar = () => {
             placeholder="Search for posts..."
             onKeyDown={onKeyDown}
             onFocus={openSearchResult}
-            onBlur={closeSearchResult}
           />
           <BiLoaderAlt
             className={`animate-spin ${
@@ -194,7 +201,6 @@ const Navbar = () => {
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={onKeyDown}
             onFocus={openSearchResult}
-            onBlur={closeSearchResult}
           />
           <BiLoaderAlt
             className={`animate-spin ${
