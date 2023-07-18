@@ -45,12 +45,12 @@ export const Newsletter = () => {
       >
         <input
           {...register("name")}
-          className="px-4 py-2 w-[85vw] rounded-md border-none outline-none"
+          className="px-4 py-2 w-[85vw] lg:w-[40vw] rounded-md border-none outline-none"
           placeholder="Enter Full Name"
         />
         <input
           {...register("email")}
-          className="px-4 py-2 w-[85vw] rounded-md border-none outline-none"
+          className="px-4 py-2 w-[85vw] lg:w-[40vw] rounded-md border-none outline-none"
           placeholder="Enter Email"
           type="email"
         />

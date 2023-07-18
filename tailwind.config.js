@@ -31,7 +31,7 @@ module.exports = {
     },
 
     fontFamily: {
-      sans: ["Open Sans", "sans-serif"],
+      sans: ["Dosis", "sans-serif"],
     },
   },
 

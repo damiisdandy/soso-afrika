@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
 
 body {
 }
@@ -17,4 +18,9 @@ body {
 }
 .body__overflow {
   overflow: hidden;
+}
+
+
+* {
+  font-family: 'Dosis', sans-serif !important;
 }
