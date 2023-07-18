@@ -29,8 +29,18 @@ export const NavLink = ({ href, children }: NavLinkProps) => {
 };
 
 const Navbar = () => {
+  const router = useRouter();
+  const [query, setQuery] = useState("");
   const { isOpen: isSidebarOpen, toggleOpen: toggleSidebar } =
     useDisclosure(false);
+  const { isOpen: isSearchOpen, toggleOpen: toggleSearch } =
+    useDisclosure(false);
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      window.location.href = `/search?q=${query}`;
+    }
+  };
 
   //puts a restriction on the body when the modal is opened since we want nop activity going on the bg
   useEffect(() => {
@@ -69,72 +79,99 @@ const Navbar = () => {
     };
   }, [headerVisible]);
 
-  const router = useRouter();
   const menuActive = router.pathname === "/reviews";
   return (
-    <nav
-      className={`z-50 p-3 px-5 sm:px-8 flex items-center justify-between bg-white w-full dark:bg-darkBg fixed top-0 transition duration-300 ease-in ${
-        headerVisible ? "translate-y-0" : "translate-y-[-100%]"
-      }`}
-    >
-      <Image
-        src={CompanyLogo}
-        alt="Company Logo"
-        placeholder="blur"
-        className="w-12 h-12 md:w-10 md:h-10 cursor-pointer"
-        onClick={() => router.push("/")}
-      />
-
-      <ul className="hidden sm:flex gap-14 items-center text-textColor dark:text-darkModeText">
-        <li>
-          <NavLink href={"/"}>Home</NavLink>
-        </li>
-        <li>
-          <NavLinkDropDown
-            name="Features & Reviews"
-            items={[
-              {
-                name: "Feed your eyes",
-                href: "/feed-your-eyes",
-              },
-              {
-                name: "Quick questions",
-                href: "/quick-questions",
-              },
-              {
-                name: "Things we see",
-                href: "/things-we-see",
-              },
-            ]}
-            urlActive={menuActive}
+    <div className="relative">
+      <nav
+        className={`z-50 p-3 px-5 sm:px-8 flex items-center justify-between bg-white w-full dark:bg-darkBg fixed top-0 transition duration-300 ease-in ${
+          headerVisible ? "translate-y-0" : "translate-y-[-100%]"
+        }`}
+      >
+        <div className="flex items-center gap-6">
+          <Image
+            src={CompanyLogo}
+            alt="Company Logo"
+            placeholder="blur"
+            className="w-12 h-12 md:w-10 md:h-10 cursor-pointer"
+            onClick={() => router.push("/")}
           />
-        </li>
-        <li>
-          <NavLinkDropDown
-            name="Psst!"
-            items={[
-              {
-                name: "Cool Stuff",
-                href: "/cool-stuff",
-              },
-              {
-                name: "New Stuff",
-                href: "/new-stuff",
-              },
-            ]}
-            urlActive={menuActive}
+          <input
+            className="px-3 py-1.5 xl:w-[500px] rounded-md border-none outline-none hidden xl:block"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search for posts..."
+            onKeyDown={onKeyDown}
           />
-        </li>
-        <li>
-          <NavLink href="/about">Soko</NavLink>
-        </li>
-        <li>
-          <ModeSwitch />
-        </li>
-      </ul>
+        </div>
 
-      <Sidebar isOpen={isSidebarOpen} toggleOpen={toggleSidebar} />
-    </nav>
+        <ul className="hidden sm:flex gap-14 items-center text-textColor dark:text-darkModeText">
+          <li>
+            <NavLink href={"/"}>Home</NavLink>
+          </li>
+          <li>
+            <NavLinkDropDown
+              name="Features & Reviews"
+              items={[
+                {
+                  name: "Feed your eyes",
+                  href: "/feed-your-eyes",
+                },
+                {
+                  name: "Quick questions",
+                  href: "/quick-questions",
+                },
+                {
+                  name: "Things we see",
+                  href: "/things-we-see",
+                },
+              ]}
+              urlActive={menuActive}
+            />
+          </li>
+          <li>
+            <NavLinkDropDown
+              name="Psst!"
+              items={[
+                {
+                  name: "Cool Stuff",
+                  href: "/cool-stuff",
+                },
+                {
+                  name: "New Stuff",
+                  href: "/new-stuff",
+                },
+              ]}
+              urlActive={menuActive}
+            />
+          </li>
+          <li>
+            <NavLink href="/about">Soko</NavLink>
+          </li>
+          <li>
+            <ModeSwitch />
+          </li>
+        </ul>
+
+        <Sidebar
+          isOpen={isSidebarOpen}
+          toggleOpen={toggleSidebar}
+          toggleSearch={toggleSearch}
+        />
+      </nav>
+      <div
+        className={`absolute z-40 transition-all block md:hidden ${
+          isSearchOpen ? "top-[calc(100%+theme(space.2))]" : "-top-20"
+        } left-0 w-screen`}
+      >
+        <input
+          className="w-full px-4 py-2 outline-none border-none"
+          value={query}
+          placeholder="Search for posts..."
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={onKeyDown}
+        />
+      </div>
+    </div>
   );
 };
 

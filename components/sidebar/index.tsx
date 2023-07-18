@@ -6,23 +6,32 @@ import { FC } from "react";
 import config from "@/config";
 import { NavLink } from "../navbar";
 import ModeSwitch from "@/components/mode-switch";
-import { BsInstagram, BsTwitter } from "react-icons/bs";
+import { BsInstagram, BsSearch, BsTwitter } from "react-icons/bs";
 import ExternalLink from "../external-link";
 
 type SidebarProps = {
   isOpen: boolean;
   toggleOpen: () => void;
+  toggleSearch: () => void;
 };
 
-const Sidebar: FC<SidebarProps> = ({ isOpen, toggleOpen }) => {
+const Sidebar: FC<SidebarProps> = ({ isOpen, toggleOpen, toggleSearch }) => {
   return (
     <div className="w-fit sm:hidden">
-      <div onClick={toggleOpen}>
-        {isOpen ? (
-          <IoMdClose className="text-black dark:text-white text-3xl" />
-        ) : (
-          <RxHamburgerMenu className="text-black dark:text-white text-2xl" />
-        )}
+      <div className="flex items-center gap-5">
+        <button
+          onClick={toggleSearch}
+          className="bg-[#ddd] active:bg-[#eee] dark:bg-[#333] w-8 h-8 flex items-center justify-center rounded-md"
+        >
+          <BsSearch className="text-black dark:text-white text-3x" />
+        </button>
+        <div onClick={toggleOpen}>
+          {isOpen ? (
+            <IoMdClose className="text-black dark:text-white text-3xl" />
+          ) : (
+            <RxHamburgerMenu className="text-black dark:text-white text-2xl" />
+          )}
+        </div>
       </div>
       {/* Navbar has a height of 72px */}
       <div
