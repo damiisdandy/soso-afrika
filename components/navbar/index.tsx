@@ -99,96 +99,94 @@ const Navbar = () => {
 
   const menuActive = router.pathname === "/reviews";
   return (
-    <div className="relative">
-      <nav
-        className={`z-50 p-3 px-5 sm:px-8 flex items-center justify-between bg-white w-full dark:bg-darkBg fixed top-0 transition duration-300 ease-in ${
-          headerVisible ? "translate-y-0" : "translate-y-[-100%]"
-        }`}
-      >
-        <div className="flex items-center gap-6">
-          <Image
-            src={CompanyLogo}
-            alt="Company Logo"
-            placeholder="blur"
-            className="w-12 h-12 md:w-10 md:h-10 cursor-pointer"
-            onClick={() => router.push("/")}
-          />
-          <div className="items-center hidden xl:flex justify-between bg-[#eee] dark:bg-[#141414] rounded-md px-3 py-1.5">
-            <input
-              className=" xl:w-[500px] h-6  border-none outline-none  bg-transparent  placeholder:text-[#aaa]"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for posts..."
-              onKeyDown={onKeyDown}
-              onFocus={openSearchResult}
-              onBlur={closeSearchResult}
-            />
-            <BiLoaderAlt
-              className={`animate-spin ${
-                queryInfo.isLoading ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          </div>
-        </div>
-
-        <ul className="hidden sm:flex gap-14 items-center text-textColor dark:text-darkModeText">
-          <li>
-            <NavLink href={"/"}>Home</NavLink>
-          </li>
-          <li>
-            <NavLinkDropDown
-              name="Features & Reviews"
-              items={[
-                {
-                  name: "Feed your eyes",
-                  href: "/feed-your-eyes",
-                },
-                {
-                  name: "Quick questions",
-                  href: "/quick-questions",
-                },
-                {
-                  name: "Things we see",
-                  href: "/things-we-see",
-                },
-              ]}
-              urlActive={menuActive}
-            />
-          </li>
-          <li>
-            <NavLinkDropDown
-              name="Psst!"
-              items={[
-                {
-                  name: "Cool Stuff",
-                  href: "/cool-stuff",
-                },
-                {
-                  name: "New Stuff",
-                  href: "/new-stuff",
-                },
-              ]}
-              urlActive={menuActive}
-            />
-          </li>
-          <li>
-            <NavLink href="/about">Soko</NavLink>
-          </li>
-          <li>
-            <ModeSwitch />
-          </li>
-        </ul>
-
-        <Sidebar
-          isOpen={isSidebarOpen}
-          toggleOpen={toggleSidebar}
-          toggleSearch={toggleSearch}
+    <nav
+      className={`z-50  p-3 px-5 sm:px-8 flex items-center justify-between bg-white border-b-[1.5px] border-[#eee] dark:border-[#232323] w-full dark:bg-darkBg fixed top-0 transition duration-300 ease-in ${
+        headerVisible ? "translate-y-0" : "translate-y-[-100%]"
+      }`}
+    >
+      <div className="flex items-center gap-6">
+        <Image
+          src={CompanyLogo}
+          alt="Company Logo"
+          placeholder="blur"
+          className="w-12 h-12 md:w-10 md:h-10 cursor-pointer"
+          onClick={() => router.push("/")}
         />
-      </nav>
+        <div className="items-center hidden xl:w-[500px] xl:flex justify-between bg-[#eee] dark:bg-[#141414] rounded-md px-3 py-1.5">
+          <input
+            className="w-full  h-6  border-none outline-none  bg-transparent  placeholder:text-[#aaa]"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search for posts..."
+            onKeyDown={onKeyDown}
+            onFocus={openSearchResult}
+            onBlur={closeSearchResult}
+          />
+          <BiLoaderAlt
+            className={`animate-spin ${
+              queryInfo.isLoading ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        </div>
+      </div>
+
+      <ul className="hidden sm:flex gap-14 items-center text-textColor dark:text-darkModeText">
+        <li>
+          <NavLink href={"/"}>Home</NavLink>
+        </li>
+        <li>
+          <NavLinkDropDown
+            name="Features & Reviews"
+            items={[
+              {
+                name: "Feed your eyes",
+                href: "/feed-your-eyes",
+              },
+              {
+                name: "Quick questions",
+                href: "/quick-questions",
+              },
+              {
+                name: "Things we see",
+                href: "/things-we-see",
+              },
+            ]}
+            urlActive={menuActive}
+          />
+        </li>
+        <li>
+          <NavLinkDropDown
+            name="Psst!"
+            items={[
+              {
+                name: "Cool Stuff",
+                href: "/cool-stuff",
+              },
+              {
+                name: "New Stuff",
+                href: "/new-stuff",
+              },
+            ]}
+            urlActive={menuActive}
+          />
+        </li>
+        <li>
+          <NavLink href="/about">Soko</NavLink>
+        </li>
+        <li>
+          <ModeSwitch />
+        </li>
+      </ul>
+
+      <Sidebar
+        isOpen={isSidebarOpen}
+        toggleOpen={toggleSidebar}
+        toggleSearch={toggleSearch}
+      />
       <div
-        className={`absolute z-40 transition-all block md:hidden ${
-          isSearchOpen ? "top-2" : "-top-20"
-        } left-0 w-screen`}
+        className={`absolute z-40 top-full overflow-hidden transition-all block md:hidden ${
+          isSearchOpen ? "h-auto" : "h-0"
+        } left-0 w-screen shadow-lg`}
       >
         <div className="items-center flex xl:hidden justify-between bg-[#eee] dark:bg-[#141414] px-3 py-1.5">
           <input
@@ -210,7 +208,7 @@ const Navbar = () => {
       {isSearchResultOpen &&
         queryInfo.isSuccess &&
         (queryInfo.data.data?.length ?? 0) > 0 && (
-          <div className="absolute z-40 bg-white dark:bg-darkBg shadow-lg xl:rounded-md flex gap-1 xl:gap-0 items-start flex-col py-2 w-screen xl:w-[500px] top-[48px] xl:top-3 xl:left-[98px]">
+          <div className="absolute z-40 bg-white dark:bg-[#232323] shadow-lg xl:rounded-md flex gap-1 xl:gap-0 items-start flex-col py-2 w-screen xl:w-[500px] top-[calc(100%+theme(space.12))] xl:top-[calc(100%-5px)] left-0 xl:left-[98px]">
             {queryInfo.data.data?.map((post) => (
               <a
                 href={`/posts/${post.slug}`}
@@ -229,7 +227,7 @@ const Navbar = () => {
             ))}
           </div>
         )}
-    </div>
+    </nav>
   );
 };
 
