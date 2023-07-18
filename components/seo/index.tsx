@@ -21,7 +21,13 @@ const Seo = ({ title, description, image, ...rest }: SeoProps) => {
         openGraph={{
           title: fullTitle,
           description,
-          images: image ? [{ ...image }] : [],
+          images: image
+            ? [{ ...image }]
+            : [
+                {
+                  url: "/companylogo.jpg",
+                },
+              ],
         }}
         twitter={{
           // TODO: add twitter handle

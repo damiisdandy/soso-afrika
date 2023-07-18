@@ -4,14 +4,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import ModeSwitch from "@/components/mode-switch";
 import NavLinkDropDown from "@/components/navlink-dropdown";
-import CompanyLogo from "@/assets/img/companylogo.png";
+import CompanyLogo from "@/assets/img/companylogo.jpg";
 import Sidebar from "@/components/sidebar";
 import { useDisclosure } from "@/hooks/useDisclosure";
 import { useQuery } from "react-query";
 import { getPosts } from "@/utils/api";
 import { BiLoaderAlt } from "react-icons/bi";
-import dayjs from "dayjs";
-import ExternalLink from "../external-link";
 
 const HEADER_TRESHOLD = 400;
 
