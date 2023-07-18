@@ -7,6 +7,11 @@ import NavLinkDropDown from "@/components/navlink-dropdown";
 import CompanyLogo from "@/assets/img/companylogo.png";
 import Sidebar from "@/components/sidebar";
 import { useDisclosure } from "@/hooks/useDisclosure";
+import { useQuery } from "react-query";
+import { getPosts } from "@/utils/api";
+import { BiLoaderAlt } from "react-icons/bi";
+import dayjs from "dayjs";
+import ExternalLink from "../external-link";
 
 const HEADER_TRESHOLD = 400;
 
@@ -30,6 +35,11 @@ export const NavLink = ({ href, children }: NavLinkProps) => {
 
 const Navbar = () => {
   const router = useRouter();
+  const {
+    isOpen: isSearchResultOpen,
+    onOpen: openSearchResult,
+    onClose: closeSearchResult,
+  } = useDisclosure(false);
   const [query, setQuery] = useState("");
   const { isOpen: isSidebarOpen, toggleOpen: toggleSidebar } =
     useDisclosure(false);
@@ -41,6 +51,14 @@ const Navbar = () => {
       window.location.href = `/search?q=${query}`;
     }
   };
+
+  const queryInfo = useQuery(
+    ["posts", query],
+    () => getPosts({ search: query, per_page: 5 }),
+    {
+      enabled: Boolean(query),
+    }
+  );
 
   //puts a restriction on the body when the modal is opened since we want nop activity going on the bg
   useEffect(() => {
@@ -95,13 +113,22 @@ const Navbar = () => {
             className="w-12 h-12 md:w-10 md:h-10 cursor-pointer"
             onClick={() => router.push("/")}
           />
-          <input
-            className="px-3 py-1.5 xl:w-[500px] rounded-md border-none outline-none hidden xl:block"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search for posts..."
-            onKeyDown={onKeyDown}
-          />
+          <div className="items-center hidden xl:flex justify-between bg-[#eee] dark:bg-[#141414] rounded-md px-3 py-1.5">
+            <input
+              className=" xl:w-[500px] h-full  border-none outline-none  bg-transparent  placeholder:text-[#aaa]"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search for posts..."
+              onKeyDown={onKeyDown}
+              onFocus={openSearchResult}
+              onBlur={closeSearchResult}
+            />
+            <BiLoaderAlt
+              className={`animate-spin ${
+                queryInfo.isLoading ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          </div>
         </div>
 
         <ul className="hidden sm:flex gap-14 items-center text-textColor dark:text-darkModeText">
@@ -163,14 +190,45 @@ const Navbar = () => {
           isSearchOpen ? "top-[calc(100%+theme(space.2))]" : "-top-20"
         } left-0 w-screen`}
       >
-        <input
-          className="w-full px-4 py-2 outline-none border-none"
-          value={query}
-          placeholder="Search for posts..."
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={onKeyDown}
-        />
+        <div className="items-center flex xl:hidden justify-between bg-[#eee] dark:bg-[#141414] px-3 py-1.5">
+          <input
+            className="w-full outline-none border-none block md:none bg-[#eee] dark:bg-[#141414] placeholder:text-[#aaa]"
+            value={query}
+            placeholder="Search for posts..."
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={onKeyDown}
+            onFocus={openSearchResult}
+            onBlur={closeSearchResult}
+          />
+          <BiLoaderAlt
+            className={`animate-spin ${
+              queryInfo.isLoading ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        </div>
       </div>
+      {isSearchResultOpen &&
+        queryInfo.isSuccess &&
+        (queryInfo.data.data?.length ?? 0) > 0 && (
+          <div className="absolute z-40 bg-white dark:bg-darkBg shadow-lg xl:rounded-md flex gap-1 xl:gap-0 items-start flex-col py-2 w-screen xl:w-[500px] top-[48px] xl:top-3 xl:left-[98px]">
+            {queryInfo.data.data?.map((post) => (
+              <a
+                href={`/posts/${post.slug}`}
+                rel="noopener noreferrer"
+                target="_self"
+                key={post.id}
+                className="px-4 py-1 group hover:bg-[#eee] dark:hover:bg-[#141414] w-full"
+              >
+                <p className="lg:font-semibold xl:font-bold group-hover:underline truncate">
+                  {post.title}
+                </p>
+                <p className="text-[#aaa] text-xs xl:text-sm">
+                  Published on {post.date}
+                </p>
+              </a>
+            ))}
+          </div>
+        )}
     </div>
   );
 };
