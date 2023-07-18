@@ -3,8 +3,9 @@ import mailChimpClient from '@mailchimp/mailchimp_marketing';
 
 mailChimpClient.setConfig({
   apiKey: process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY || '',
-  server: 'us21',
+  server: 'us15',
 });
+
 
 const mailChimp = mailChimpClient;
 
@@ -34,7 +35,7 @@ type AddToMailingList = (
   audienceId?: string
 ) => Promise<{
   status: boolean;
-  message: unknown;
+  message: string;
 }>;
 
 /**
@@ -45,7 +46,7 @@ type AddToMailingList = (
 export const addToMailingList: AddToMailingList = async (
   email,
   otherDetails,
-  audienceId = process.env.MAILCHIMP_AUDIENCE_ID || ''
+  audienceId = process.env.NEXT_PUBLIC_MAILCHIMP_AUDIENCE_ID || ''
 ) => {
   try {
     await mailChimp.lists.addListMember(audienceId, {
@@ -72,6 +73,7 @@ export const addToMailingList: AddToMailingList = async (
       message: `${email} subscribed to email list`,
     };
   } catch (err) {
+    console.log(err);
     const _err = err as MailChimpError;
     if (_err.response) {
       if (_err?.response.body?.title === 'Member Exists') {
@@ -83,7 +85,7 @@ export const addToMailingList: AddToMailingList = async (
     }
     return {
       status: false,
-      message: err,
+      message: 'problem subscribing to email list',
     };
   }
 };
