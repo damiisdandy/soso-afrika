@@ -80,7 +80,7 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, toggleOpen, toggleSearch }) => {
             />
           </li>
           <li>
-            <NavLink href={"/about"}>Home</NavLink>
+            <NavLink href={"/about"}>Soko</NavLink>
           </li>
         </ul>
         <div className=" sm:absolute bottom-10 px-10 flex justify-between w-full items-center">
