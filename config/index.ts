@@ -1,5 +1,5 @@
 const defaultConfig = {
-  apiRoot: 'https://wesokoafrika.com/index.php/wp-json/wp/v2/',
+  apiRoot: 'https://staging-cf8f-wesokoafrika.wpcomstaging.com/index.php/wp-json/wp/v2',
   social: {
     instagram: "https://www.instagram.com/wesokoafrika",
     twitter: {
