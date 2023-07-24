@@ -47,10 +47,13 @@ export default function Home({ posts }: Props) {
                 </h1>
                 <p className="mt-8  md:leading-10 text-md md:text-xl w-[100%] lg:w-[75%] px-[2rem] sm:px-[3rem] text-center md:text-left">
                   We Soko Afrika translates to We &apos;Market&apos; Afrika,
-                  (Soko being Swahili). <br /> Honestly? we are here to use
-                  every opportunity to celebrate Afrika. Through her music, her
-                  culture, her people, her food, her fashion, her entrepreneurs,
-                  her possibilities and her passions!
+                  <span className="whitespace-nowrap inline-block">
+                    (Soko being Swahili).
+                  </span>{" "}
+                  <br /> Honestly? we are here to use every opportunity to
+                  celebrate Afrika. Through her music, her culture, her people,
+                  her food, her fashion, her entrepreneurs, her possibilities
+                  and her passions!
                 </p>
                 <div className="flex md:hidden justify-center items-center my-6 text-2xl gap-6">
                   <ExternalLink href={config.social.instagram}>
