@@ -47,7 +47,7 @@ const ReviewsCard = ({ img, title, desc, slug, date }: ReviewsCardProps) => {
         <span className="flex items-center gap-3 font-bold">{date}</span>
         <h5
           className="flex items-center gap-3 font-semibold text-header cursor-pointer text-md"
-          onClick={() => router.push("/reviews/1")}
+          onClick={() => router.push(`/posts/${slug}`)}
         >
           Continue Reading
           <ArrowRight />
